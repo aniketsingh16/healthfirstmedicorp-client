@@ -1,0 +1,31 @@
+.ps-pagination {
+    padding: 30px;
+    .pagination {
+        margin-bottom: 0;
+        justify-content: center;
+
+        a {
+            width: 34px;
+            height: 34px;
+            margin: 0 4px;
+            font-size: 14px;
+            color: $color-1st;
+            font-weight: bold;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-weight: bold;
+            }
+        }
+
+        .active {
+            a {
+                background-color: $color-1st;
+                color: white;
+                border-radius: 50%;
+            }
+        }
+    }
+}

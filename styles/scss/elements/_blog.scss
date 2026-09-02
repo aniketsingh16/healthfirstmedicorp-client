@@ -1,0 +1,87 @@
+.ps-blog--latset {
+    position: relative;
+    .ps-blog__badge {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 100%;
+        z-index: 10;
+
+        .ps-badge__item {
+            background-color: $color-1st;
+            color: white;
+            font-weight: 500;
+            border-radius: 40px;
+            margin: 0 5px 5px;
+            font-size: 12px !important;
+            line-height: 20px !important;
+            padding: 0 10px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+    }
+
+    .ps-blog__thumbnail {
+        overflow: hidden;
+        position: relative;
+        a {
+            display: block;
+        }
+
+        img {
+            border-radius: 4px;
+            width: 100%;
+            transition: 500ms ease;
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.1, 1.1);
+            }
+        }
+    }
+
+    .ps-blog__content {
+        padding: 20px 0;
+        color: $color-contrast;
+    }
+
+    .ps-blog__meta {
+        display: flex;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .ps-blog__date {
+        font-weight: 600;
+        margin-right: 10px;
+    }
+
+    .ps-blog__author {
+        color: $color-contrast;
+        &:hover {
+            color: $color-warning;
+        }
+    }
+
+    .ps-blog__title {
+        display: block;
+        font-size: 21px;
+        line-height: 24px;
+        color: $color-1st;
+        font-weight: 500;
+        &:hover {
+            color: $color-warning;
+        }
+    }
+
+    .ps-blog__desc {
+        display: none;
+        margin-bottom: 0;
+        font-size: 16px;
+        color: $color-contrast;
+    }
+}
+
+

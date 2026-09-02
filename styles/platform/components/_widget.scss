@@ -1,0 +1,93 @@
+.widget_shop {
+    @extend %list-reset;
+
+    .widget-title {
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 1em;
+        color: $color-1st;
+        font-weight: 500;
+    }
+
+}
+
+.widget_categories {
+    .ps-list--under {
+        li {
+            margin-bottom: 16px;
+
+            a {
+                font-size: 18px;
+                font-weight: 500;
+                color: $color-1st;
+
+                &:hover {
+                    color: $color-orange-new;
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.widget_blog {
+    @extend %list-reset;
+    margin-bottom: 30px;
+    .widget-title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 1em;
+    }
+
+    &.widget_categories {
+        margin-bottom: 50px;
+        a {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: $color-heading;
+            line-height: 20px;
+            padding: 10px 0;
+        }
+    }
+}
+
+.widget_filter-by-brands {
+    .form-group {
+        margin-bottom: 10px;
+    }
+}
+
+.widget_shop-colors {
+    padding-bottom: 26px;
+
+    .color {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.widget--shop-related-products {
+    position: relative;
+
+    .ps-product {
+        border-bottom: 1px solid $color-gray-light;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .widget__content {
+        border: 1px solid $color-gray-light;
+    }
+}
+

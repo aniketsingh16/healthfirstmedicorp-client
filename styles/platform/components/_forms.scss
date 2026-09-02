@@ -1,0 +1,155 @@
+.ps-form--checkout {
+    .form-control {
+        height: 46px;
+        border-radius: 25px;
+        background-color: $color-gray-light;
+        border-color: $color-gray-light;
+    }
+
+    textarea.form-control {
+        height: auto;
+        padding: 30px 20px;
+    }
+
+    .form-group {
+        label {
+            color: $color-1st;
+        }
+    }
+
+    .ps-form__heading {
+        font-size: 18px;
+        color: $color-1st;
+    }
+
+    @media screen and (min-width: 992px) {
+        padding: 30px;
+        border: 1px solid $color-gray-light;
+        border-radius: 4px;
+        .ps-form__heading {
+            font-size: 30px;
+        }
+    }
+}
+
+.ps-form--newsletter {
+    @media screen and (max-width: 480px) {
+        .input-group {
+            display: flex;
+            flex-flow: column nowrap;
+            input {
+                display: block;
+                height: 56px;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+.ps-form--contact {
+    .ps-form__title {
+        position: relative;
+        margin: 0 0 28px;
+        padding-top: 20px;
+        font-size: 28px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: $color-1st;
+
+        // Small accent rule where the reference has its "— Contact Us" label.
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 38px;
+            height: 3px;
+            border-radius: 2px;
+            background-color: $color-orange-new;
+        }
+    }
+
+    .ps-form__group {
+        margin-bottom: 18px;
+    }
+
+    // Filled fields with no visible border — the defining look of the
+    // reference. Overrides bootstrap's .form-control defaults.
+    .form-control {
+        height: 54px;
+        padding: 0 20px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        // background-color: #f4f4f2;
+        color: $color-1st;
+        font-size: 15px;
+        box-shadow: none;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+
+        &::placeholder {
+            color: #9aa1ab;
+        }
+
+        // The border only appears on focus, so the resting state stays clean
+        // but keyboard users still get a clear indicator.
+        &:focus {
+            background-color: #fff;
+            border-color: $color-1st;
+            box-shadow: none;
+        }
+    }
+
+    textarea.form-control {
+        height: auto;
+        min-height: 170px;
+        padding: 18px 20px;
+        resize: vertical;
+    }
+
+    .ps-form__submit {
+        margin-top: 12px;
+
+        // Square off the pill shape .ps-btn sets globally (border-radius: 50px)
+        // so the submit button matches the 6px corners of the fields above it.
+        .ps-btn {
+            border-radius: 6px;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .ps-form--contact {
+        margin-top: 40px;
+    }
+}
+
+// Inline field error, replacing the browser's native validation bubble.
+// Values match .ps-checkout-form__error in app/(app)/shop/cart/checkout.scss so
+// the two read as one treatment; kept generic here (no text-align, no width) so
+// it can be reused by the other forms without fighting their layouts.
+.ps-form__error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #e0507a;
+}
+
+// The newsletter band is centre-aligned, so its error needs to be too.
+//
+// It is also taken out of flow: as a block element it grew the form when it
+// appeared and pushed the footer down, so the whole band jumped on a failed
+// submit. Absolute keeps the layout perfectly still — the same way the native
+// validation bubble it replaces floated over the page rather than displacing it.
+.ps-section--newsletter .ps-section__content form {
+    position: relative;
+}
+
+.ps-section--newsletter .ps-form__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 8px;
+    text-align: center;
+}

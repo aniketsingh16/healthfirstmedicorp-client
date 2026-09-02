@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -25 700 250">
+  <defs>
+    <linearGradient id="shieldFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#214B8D"/><stop offset="1" stop-color="#102F67"/></linearGradient>
+    <linearGradient id="leafFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#57B842"/><stop offset="1" stop-color="#45A93B"/></linearGradient>
+    <linearGradient id="leafDarkFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#47B94A"/><stop offset="1" stop-color="#228D37"/></linearGradient>
+    
+  </defs>
+  <g transform="translate(0 2.2) scale(0.96 0.7871999999999999)">
+    <path d="M100 12 174 38v102c0 48-31 80-74 100-43-20-74-52-74-100V38z" fill="url(#shieldFill)" stroke="#0B2E68" stroke-width="-3" stroke-linejoin="round"/>
+    <path d="M100 25 161 47v92c0 38-24 66-61 85-37-19-61-47-61-85V47z" fill="none" stroke="#3863A0" stroke-width="2.5" opacity=".76"/>
+    <path d="M100 28 158 49v87c0 35-22 60-58 80-36-20-58-45-58-80V49z" fill="#193D7D" opacity="0.48"/>
+    <path d="M101 57C76 71 63 96 65 125c2 25 15 47 35 67 11-22 17-44 16-66-1-28-7-51-15-69Z" fill="url(#leafFill)"/>
+    <path d="M101 57c20 18 31 38 31 61 0 24-11 47-32 74-9-22-14-45-12-67 2-26 7-47 13-68Z" fill="url(#leafDarkFill)"/>
+    <path d="M101 61c-1 34-1 78 1 128" fill="none" stroke="#A8E872" stroke-width="2.2" opacity=".92"/>
+    <path d="m101 97 26-20M101 123 72 103M101 146l-27-16M102 148l27-26" fill="none" stroke="#278B39" stroke-width="2" opacity=".72"/>
+    <rect x="90" y="89" width="18" height="58" rx="3" fill="#FFF"/>
+    <rect x="72" y="108" width="54" height="20" rx="3" fill="#FFF"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="205.56" y="113" fill="#173B78" font-size="81.12" font-weight="800" letter-spacing="-3.6">Healthfirst</text>
+    <text x="282.56" y="157" fill="#57B842" font-size="33.28" font-weight="500" letter-spacing="9.776000000000002">MEDICORP</text>
+  </g>
+</svg>

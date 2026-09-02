@@ -1,0 +1,582 @@
+/* ===========================================================================
+   About us — page styles
+   ---------------------------------------------------------------------------
+   Everything here is scoped under `.ps-about`, so it styles this page only and
+   cannot leak into the shared components that also use these class names
+   (`.ps-block__title`, `.ps-banner`, `.ps-section--block-grid` are all reused
+   elsewhere in the theme).
+
+   General building blocks are left alone on purpose: `.container`, the
+   breadcrumb, the bootstrap grid (`.row` / `.col-*`) and `<Subscribe />` keep
+   their global styling. Only about-specific wrappers and contextual tweaks
+   live here.
+
+   Self-contained by design — the variables below are local, so you can edit
+   this file without touching the platform theme.
+
+   Activate with one line in app/(app)/about-us/page.jsx:
+       import "./about-us.scss";
+   =========================================================================== */
+
+// ---------------------------------------------------------------- variables
+$about-heading:      #103178;   // headings, director name
+$about-text:         #5b6c8f;   // body copy
+$about-accent:       #f5851f;   // rules, icon accents
+$about-border:       #e5e9f2;
+$about-surface:      #f7f9fc;   // value-card background
+$about-radius:       8px;
+
+$about-gap:          40px;      // vertical rhythm between blocks
+$about-gap-sm:       24px;
+
+// Our Story image width. The director's portrait below is 350px, so this is
+// deliberately one step larger. Change this single value to resize it.
+$about-story-image:  380px;
+
+// Nudges the Our Story image up against the copy. Negative moves it up.
+// Applied as a transform, so it shifts visually without changing the grid.
+// Now that the row is top-aligned the image already sits high, so this is a
+// small optical correction rather than the large lift it was before.
+$about-story-shift:  -12px;
+
+// Body copy shared by the Our Story text and the Director's message, so the
+// two cannot drift apart. Change it here and both follow.
+// Drop `font-style` if you want them upright rather than italic.
+%about-body-copy {
+    color: $about-text;
+    font-size: 16px;
+    line-height: 28px;
+    font-style: italic;
+}
+
+// The shared `.ps-page--inner` rule in the platform theme gives every inner
+// page padding-bottom: 40/60/80px. This page ends on the <Subscribe /> band,
+// which sits directly above the footer's trust bar and needs far less
+// separation than a page ending in body copy.
+//
+// Scoped to `.ps-page--about` — a class set only on this page's <main>. The
+// homepage is <main id="homepage-one"> and carries neither `ps-page--inner`
+// nor `ps-page--about`, so it cannot match this. The compound selector also
+// out-specifies the platform rule's media-query variants, so one declaration
+// covers every breakpoint.
+.ps-page--inner.ps-page--about {
+    padding-bottom: 0;
+    // Padding bottomed out at 0, so this pulls the footer up into the
+    // newsletter section's own trailing whitespace. Scoped to this page's
+    // <main>, so the overlap cannot reach the homepage or any other page.
+    margin-bottom: -15px;
+}
+
+.ps-about {
+    // ------------------------------------------------------------ rhythm
+    // Zero, not $about-gap: <Subscribe /> is the last child here, and the rule
+    // above already provides the page's bottom breathing room. The two used to
+    // stack into ~120px of dead space under the newsletter form.
+    padding-bottom: 0;
+
+    // The page stacks: intro → director → values → video → subscribe.
+    // A single owl selector keeps spacing consistent without every child
+    // needing its own margin rule.
+    > * + * {
+        margin-top: $about-gap;
+    }
+
+    // --------------------------------------------------------- typography
+    h2 {
+        color: $about-heading;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 1.3;
+        margin: 0 0 8px;
+    }
+
+    .ps-block__title {
+        color: $about-heading;
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0 0 12px;
+    }
+
+    .ps-block__subtitle {
+        color: $about-text;
+        font-size: 16px;
+        line-height: 28px;
+        max-width: 900px;
+    }
+
+    // The markup uses bare <hr> as a section rule. Restyled into a short
+    // accent bar rather than a full-width grey line.
+    hr {
+        width: 64px;
+        height: 3px;
+        margin: 0 0 $about-gap-sm;
+        border: none;
+        border-radius: 2px;
+        background-color: $about-accent;
+        opacity: 1;
+    }
+
+    // Consecutive <br /> in the markup are used for spacing; neutralise them
+    // so the rhythm above stays in charge.
+    br + br {
+        display: none;
+    }
+
+    // ==================================================== intro / our story
+    .ps-about--info {
+        padding-top: $about-gap-sm;
+    }
+
+    // Two columns: copy left, image right. The heading and its rule sit above
+    // at full width, so the rule still spans the section like the reference.
+    .ps-about__story {
+        display: grid;
+        // Fixed image column rather than a fraction, so the picture stays a
+        // predictable size and the copy absorbs any leftover width.
+        grid-template-columns: minmax(0, 1fr) $about-story-image;
+        gap: $about-gap;
+        // Top-aligned, not centred. The image is far taller than the copy, so
+        // centring pushes the first line of text down by half the difference —
+        // which reads as a large unexplained gap under the heading.
+        align-items: start;
+    }
+
+    .ps-about__story-text {
+        @extend %about-body-copy;
+
+        // Small optical drop so the first line sits just below the image top
+        // rather than flush with it. Raise or remove to align them exactly.
+        padding-top: 16px;
+
+        // The shared `.ps-block__subtitle` caps width for full-bleed copy;
+        // inside a column that cap would leave a ragged gap on the right.
+        max-width: none;
+
+        p {
+            @extend %about-body-copy;
+        }
+
+        p {
+            margin: 0 0 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        // The company name in the opening line. Takes the heading colour as
+        // well as the weight — bold alone barely reads against italic body copy.
+        strong {
+            color: $about-heading;
+            font-weight: 600;
+        }
+    }
+
+    .ps-about__story-image {
+        transform: translateY($about-story-shift);
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: $about-radius;
+        }
+    }
+
+    // ================================================== director's message
+    .ps-about__project {
+        padding: 0;
+        margin-bottom: $about-gap;
+
+        // This section is already inside `.container` from the page, and it
+        // renders its own — cancel the inner one so the copy does not indent
+        // twice on desktop.
+        > .container {
+            padding-left: 0;
+            padding-right: 0;
+            max-width: none;
+        }
+    }
+
+    .ps-section--block-grid {
+        display: grid;
+        grid-template-columns: 350px minmax(0, 1fr);
+        gap: $about-gap;
+        align-items: center;
+        padding: $about-gap-sm;
+        border: 1px solid $about-border;
+        border-radius: $about-radius;
+        background-color: $about-surface;
+
+        .ps-section__thumbnail {
+            // The grid centres its items, which splits the leftover height
+            // evenly above and below the portrait. Anchoring to the top puts
+            // that space below instead; the small offset keeps it from sitting
+            // flush against the section rule. Raise it to move the photo down.
+            align-self: start;
+            margin-top: 7px;
+            // Restores the theme's own bottom gap. Zeroing it left the portrait
+            // sitting flush against whatever follows, because the photo is
+            // taller than the text column and so sets the row height itself —
+            // there is no leftover slack for align-self to push downward.
+            margin-bottom: 26px;
+
+            .ps-section__image {
+                display: block;
+                overflow: hidden;
+                border-radius: $about-radius;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            // style.min.css:1844 applies `transform: scale(1.1)` on hover to
+            // every .ps-section--block-grid thumbnail. This is a portrait, not
+            // a product tile, so the zoom is cancelled here only — other pages
+            // using block-grid keep it.
+            //
+            // `height: auto` matters as much: style.min.css:1838 sets
+            // `width: 100%` with no height, so the HTML height attribute wins
+            // and squashes a non-square portrait into a square.
+            img,
+            img:hover {
+                width: 100%;
+                height: auto;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        .ps-section__content {
+            min-width: 0;
+        }
+
+        .ps-section__desc {
+            @extend %about-body-copy;
+
+            // The quote mark is an <img> inside an <h3>; keep it small and
+            // decorative rather than heading-sized.
+            .ps-section__title {
+                margin: 0 0 12px;
+
+                img {
+                    width: 34px;
+                    height: auto;
+                }
+            }
+
+            hr {
+                margin: $about-gap-sm 0 16px;
+            }
+        }
+
+        h4 {
+            color: $about-heading;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 2px;
+        }
+
+        // Script faces sit small at a given px size and carry more visual
+        // weight, so this is sized up and given room the upright name did not
+        // need. Remove this block along with the font import to revert.
+        h4.ps-about__signature {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.1;
+            margin: 8px 0 4px;
+        }
+
+        p {
+            color: $about-text;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+
+    // ============================================================= values
+    .ps-about__extent {
+        margin-top: $about-gap;
+    }
+
+    // ------------------------------------------------------------- values
+    // Circular icon badges alternating above and below a connecting line.
+    $val-blue:    #1c4e9d;
+    $val-orange:  #f07e22;
+    $val-ring:    #eef1f6;
+    $val-badge:   150px;
+    $val-offset:  40px;   // how far raised/dropped items sit from the centreline
+
+    .ps-values {
+        position: relative;
+        padding: $val-offset 0;
+    }
+
+    .ps-values__track {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+
+        // The line the badges sit on. Behind everything, hence z-index 0 with
+        // the items lifted above it.
+        &::before {
+            content: "";
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            top: 50%;
+            height: 2px;
+            background-color: $val-ring;
+            z-index: 0;
+        }
+    }
+
+    .ps-values__item {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 0;
+        max-width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        // Raised: badge above the line, copy beneath it.
+        &--up {
+            transform: translateY(-$val-offset);
+        }
+
+        // Dropped: copy first, badge below — reversing the column keeps the
+        // markup order identical for both.
+        &--down {
+            transform: translateY($val-offset);
+            flex-direction: column-reverse;
+        }
+    }
+
+    .ps-values__badge {
+        width: $val-badge;
+        height: $val-badge;
+        flex-shrink: 0;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        // White disc with a coloured ring, rather than the reference's solid
+        // fill. The supplied icons are multi-tone artwork with white cut-outs —
+        // on a solid fill they would need flattening to a silhouette, which
+        // destroys their internal detail. Ring keeps the colour coding.
+        background-color: #fff;
+        box-shadow: 0 0 0 3px currentColor, 0 0 0 15px $val-ring;
+        transition: transform 0.3s ease;
+
+        img {
+            // Sized generously because the source PNGs carry a lot of internal
+            // padding — the artwork occupies roughly half its own canvas.
+            width: 92px;
+            height: auto;
+        }
+    }
+
+    .ps-values__item:hover .ps-values__badge {
+        transform: scale(1.04);
+    }
+
+    // Short connector between badge and copy, matching the stems in the artwork.
+    .ps-values__stem {
+        width: 2px;
+        height: 26px;
+        margin: 14px 0 10px;
+        background-color: $val-ring;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -4px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .ps-values__title {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+    }
+
+    .ps-values__text {
+        color: $about-text;
+        font-size: 13px;
+        line-height: 21px;
+        font-style: normal;
+        margin: 0 auto;
+        max-width: 230px;
+    }
+
+    // ---- colour pairs -------------------------------------------------
+    // `color` on the badge feeds the inner ring via currentColor, so each pair
+    // sets its hue once.
+    .ps-values__item--blue {
+        .ps-values__badge { color: $val-blue; }
+        .ps-values__title { color: $val-blue; }
+        .ps-values__stem::after { background-color: $val-blue; }
+    }
+
+    .ps-values__item--orange {
+        .ps-values__badge { color: $val-orange; }
+        .ps-values__title { color: $val-orange; }
+        .ps-values__stem::after { background-color: $val-orange; }
+    }
+
+    // ============================================================== video
+    .ps-about--video {
+        margin-top: $about-gap;
+
+        .ps-banner {
+            border-radius: $about-radius;
+            overflow: hidden;
+        }
+
+        .ps-banner__title {
+            color: $about-heading;
+        }
+
+        .ps-banner__thumnail {   // NB: spelling matches the markup
+            position: relative;
+
+            .ps-banner__image {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: $about-radius;
+            }
+        }
+
+        // Play button centred over the poster image.
+        #ps-video-gallery {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+
+            .ps-banner__video {
+                width: 64px;
+                height: 64px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.92);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+                transition: transform 0.25s ease;
+
+                i {
+                    font-size: 22px;
+                    color: $about-accent;
+                    margin-left: 3px;   // optical centring for the play glyph
+                }
+            }
+
+            a:hover .ps-banner__video {
+                transform: scale(1.06);
+            }
+        }
+    }
+
+    // ======================================================== breakpoints
+    @media (max-width: 991px) {
+        > * + * {
+            margin-top: $about-gap-sm;
+        }
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .ps-section--block-grid {
+            grid-template-columns: 1fr;
+            gap: $about-gap-sm;
+            text-align: center;
+
+            .ps-section__thumbnail {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        // Image drops below the copy rather than shrinking to a thumbnail.
+        .ps-about__story {
+            grid-template-columns: 1fr;
+            gap: $about-gap-sm;
+        }
+
+        // Keep it from going full-bleed once it is on its own row, and drop
+        // the upward nudge — that only makes sense beside the copy.
+        .ps-about__story-image {
+            max-width: $about-story-image;
+            margin: 0 auto;
+            transform: none;
+        }
+    }
+
+    @media (max-width: 575px) {
+        h2 {
+            font-size: 22px;
+        }
+
+        .ps-block__title {
+            font-size: 19px;
+        }
+
+        .ps-block__subtitle {
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        // Badges stack vertically and level out — the alternating offset and
+        // the connecting line only make sense on a horizontal row.
+        .ps-values {
+            padding: 0;
+        }
+
+        .ps-values__track {
+            flex-direction: column;
+            gap: 36px;
+
+            &::before { display: none; }
+        }
+
+        .ps-values__item {
+            max-width: 340px;
+            transform: none;
+
+            &--down { flex-direction: column; }
+        }
+
+        .ps-values__badge {
+            width: 118px;
+            height: 118px;
+            box-shadow: 0 0 0 9px #eef1f6;
+
+            img { width: 46px; }
+        }
+
+        .ps-about--video #ps-video-gallery .ps-banner__video {
+            width: 52px;
+            height: 52px;
+
+            i {
+                font-size: 18px;
+            }
+        }
+    }
+}

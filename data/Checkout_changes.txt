@@ -1,0 +1,64 @@
+1. Import toast — line 11
+
+
+  import { useRouter } from "next/navigation";
++ import { toast } from "sonner";
+  import "./checkout.scss";
+<Toaster /> is already mounted in app/(app)/layout.jsx, so nothing else was needed.
+
+2. Add isPlacingOrder state — line 91
+
+
+  const [isTransitioning, setIsTransitioning] = useState(false);
++ const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+Separate from isTransitioning, which drives the 1-second fake loader between wizard steps. The order POST is a real network call with unknown duration, so it needed its own flag.
+
+3. Rewrote handleNext — lines 149-192
+
+Before:
+
+
+const res = await fetch("/api/checkout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        address
+        // deliveryMethod,
+        // paymentMethod,
+        // cartItems: cartProducts,
+        // subtotal, shippingCost, tax, total,
+    }),
+});
+
+if (!res.ok) throw new Error("Order submission failed");
+removeItems("cart");
+router.push("/checkout/success");
+After — four distinct changes inside this function:
+
+Payload shape. deliveryMethod and paymentMethod are now sent (they were commented out, so the server had no idea what the buyer picked). cartItems sends {id, quantity} only, mapped down from cartProducts. The commented-out subtotal/tax/total stayed commented — deliberately, since the server recomputes them.
+setIsPlacingOrder(true) at the top, cleared in a finally so it resets on both success and failure.
+Error handling. if (!res.ok) throw sent every failure into the catch block, where it was only console.error'd — the buyer saw the button do nothing. Now it reads data.error from the response and shows it, so "3 items are out of stock" actually reaches the person.
+Redirect path. /checkout/success → `/shop/success?order=${...}`. The old path 404'd; the page lives at app/(app)/shop/success/page.jsx, which serves /shop/success.
+4. Added the 401 branch — lines 171-174
+
+
+if (res.status === 401) {
+    toast.error("Please sign in to place your order.");
+    return;
+}
+Added when I decided to leave /shop/cart public in proxy.js. Since a guest can now reach checkout, the generic error message would have been misleading — this gives them the actual reason.
+
+5. Wired the CTA button — lines 307-314
+
+
+- ctaLabel={CTA_LABEL[currentStep]}
+- ctaDisabled={isCtaDisabled || isTransitioning}
++ ctaLabel={
++     isPlacingOrder ? "Placing order…" : CTA_LABEL[currentStep]
++ }
++ ctaDisabled={
++     isCtaDisabled || isTransitioning || isPlacingOrder
++ }
+Adding isPlacingOrder to ctaDisabled is the part that matters. Without it, an impatient buyer double-clicking "Pay Now" fires two POSTs and gets two orders.
+
+I didn't touch any other part of the file — the wizard steps, StepCart, StepAddress, StepBilling, OrderSummarySidebar, the totals useMemos, and the pincode lookup are all unchanged.

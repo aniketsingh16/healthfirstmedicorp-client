@@ -1,0 +1,64 @@
+{
+    "reviews": [
+        {
+            "name": "Esther Howard",
+            "images": [
+                "img/reviews/testimonial1.jpg",
+                "img/reviews/testimonial2.jpg"
+            ],
+            "avatar": "img/avatar/1-100x100.png",
+            "date": "October 30",
+            "rate": 4,
+            "text": "There was a small mistake in the order. In return, I got the correct order and I could keep the wrong one for myself."
+        },
+        {
+            "name": "Albert Flores",
+            "avatar": "img/avatar/2-100x100.png",
+            "date": "October 25",
+            "rate": 4,
+            "text": "I ordered on Friday evening and on Monday at 12:30 the package was with me. I have never encountered such a fast order processing."
+        },
+        {
+            "name": "Dianne Russell",
+            "images": [
+                "img/reviews/testimonial6.jpg"
+            ],
+            "avatar": "img/avatar/5-100x100.png",
+            "date": "September 24",
+            "rate": 4,
+            "text": "I ordered on Friday evening and on Monday at 12:30 the package was with me. I have never encountered such a fast order processing."
+        },
+        {
+            "name": "Darlene Robertson",
+            "avatar": "img/avatar/4-100x100.png",
+            "date": "May 20",
+            "rate": 4,
+            "text": "Everything is perfect. I would recommend!"
+        },
+        {
+            "name": "Brooklyn Simmons",
+            "images": [
+                "img/reviews/testimonial3.jpg",
+                "img/reviews/testimonial4.jpg",
+                "img/reviews/testimonial5.png"
+            ],
+            "avatar": "img/avatar/3-100x100.png",
+            "date": "May 29",
+            "rate": 4,
+            "text": "There was a small mistake in the order. In return, I got the correct order and I could keep the wrong one for myself."
+        },
+        {
+            "name": "Kristin Watson",
+            "avatar": "img/avatar/6-100x100.png",
+            "date": "September 9",
+            "rate": 4,
+            "text": "Everything is perfect. I would recommend!"
+        },
+        {
+            "name": "Mark J.",
+            "rate": 4,
+            "avatar": "img/avatar/6-100x100.png",
+            "text": "I ordered on Friday evening and on Monday at 12:30 the package was with me. I have never encountered such a fast order processing."
+        }
+    ]
+}

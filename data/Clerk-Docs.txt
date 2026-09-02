@@ -1,0 +1,8 @@
+Mounting and Unmounting of Clerk from web application:
+
+-> /api/webhook/route.js 
+
+<SignedIn /> from ModuleHeaderActions
+
+-> /api/checkout.route.js
+

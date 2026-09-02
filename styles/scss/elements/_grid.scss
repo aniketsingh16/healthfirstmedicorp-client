@@ -1,0 +1,34 @@
+html, body {
+    min-height: 100%;
+    position: relative;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 1279px) {
+    .container {
+        max-width: 1270px;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
+

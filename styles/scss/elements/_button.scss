@@ -1,0 +1,137 @@
+.ps-btn--warning {
+    border: 1px solid $color-warning;
+    background-color: $color-warning;
+    color: white;
+
+    &:hover {
+        background-color: white;
+        color: $color-warning;
+    }
+}
+
+.ps-btn--primary {
+    border: 1px solid $color-1st;
+    background-color: $color-1st;
+    color: white;
+
+    &:hover {
+        background-color: white;
+        color: $color-1st;
+    }
+}
+
+.ps-btn--disabled {
+    border-color: $color-border;
+    background-color: $color-border;
+    color: $color-1st;
+    opacity: 0.5;
+}
+
+.ps-btn--success {
+    border-color: $color-success;
+    background-color: $color-success;
+    color: white;
+}
+
+.ps-btn--border {
+    border: 1px solid $color-border;
+    background-color: $color-border;
+    color: $color-1st;
+}
+
+.ps-btn, button.ps-btn {
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 50px;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 25px;
+    line-height: 24px;
+    display: inline-block;
+    width: 100%;
+
+    &--rounded {
+        border-radius: 50px;
+    }
+
+    &--curve {
+        border-radius: 5px;
+    }
+
+    &--outline {
+        background-color: white;
+        border: 1px solid $color-warning;
+        color: $color-warning;
+
+        &:hover {
+            background-color: $color-warning;
+            color: white;
+        }
+    }
+
+    &--fullwidth {
+        width: 100%;
+        text-align: center;
+    }
+
+    &--sm {
+        padding: .5rem 2rem;
+        font-size: 1.2rem;
+
+        &.ps-btn--curve {
+            border-radius: 3px;
+        }
+    }
+
+    &--lg {
+        padding: 1.5rem 4rem;
+    }
+
+    &--xl {
+        padding: 2rem 6rem;
+        font-size: 1.6rem;
+    }
+
+    &--reverse {
+        background-color: #576391;
+
+        &:hover {
+            background-color: $color-2nd;
+        }
+    }
+
+    &--gray {
+        background-color: #e5e5e5;
+        color: #000000;
+        font-size: 1.6rem;
+    }
+
+    &--black {
+        background-color: $color-heading;
+
+        &.ps-btn--outline {
+            background-color: transparent;
+            border: 2px solid $color-heading;
+            color: $color-heading;
+
+            &:hover {
+                background-color: $color-heading;
+                color: #ffffff;
+            }
+        }
+    }
+
+    &:hover, &:active {
+        color: #fff;
+        background-color: $color-1st;
+
+        &.ps-btn--black {
+            background-color: $color-1st;
+        }
+    }
+}
+
+
+

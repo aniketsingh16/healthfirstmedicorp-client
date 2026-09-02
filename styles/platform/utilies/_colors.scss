@@ -1,0 +1,87 @@
+$color-1st: #103178;
+$color-1st-lighter: lighten($color-1st, 20%);
+$color-1st-light: lighten($color-1st, 10%);
+$color-1st-dark: darken($color-1st, 10%);
+$color-1st-darker: darken($color-1st, 20%);
+
+$color-2nd: #ff9923;
+$color-2nd-lighter: lighten($color-2nd, 20%);
+$color-2nd-light: lighten($color-2nd, 10%);
+$color-2nd-dark: darken($color-2nd, 10%);
+$color-2nd-darker: darken($color-2nd, 20%);
+$color-3rd: #ffc800;
+
+$color-success: #12a05c;
+
+$color-success-lighter: lighten($color-success, 20%);
+$color-success-light: lighten($color-success, 10%);
+$color-success-dark: darken($color-success, 10%);
+$color-success-darker: darken($color-success, 20%);
+
+$color-info: #E5F5F4;
+
+$color-info-lighter: lighten($color-info, 20%);
+$color-info-light: lighten($color-info, 10%);
+$color-info-dark: darken($color-info, 10%);
+$color-info-darker: darken($color-info, 20%);
+
+$color-warning: #FD8D27;
+$color-warning-bg: #fdf6ed;
+$color-warning-border: #ffebd3;
+
+$color-warning-lighter: lighten($color-warning, 20%);
+$color-warning-light: lighten($color-warning, 10%);
+$color-warning-dark: darken($color-warning, 10%);
+$color-warning-darker: darken($color-warning, 20%);
+
+$color-danger: rgba(240,0,0,1);
+
+$color-danger-lighter: lighten($color-danger, 20%);
+$color-danger-light: lighten($color-danger, 10%);
+$color-danger-dark: darken($color-danger, 10%);
+$color-danger-darker: darken($color-danger, 20%);
+
+$color-border: rgba(240,242,245,1);
+$color-border1: rgba(217,222,232,1);
+$color-border2: rgba(40,70,134,1);
+$color-border3: #4B4B4B;
+$color-border4: #D9D9D9;
+
+$color-border-lighter: lighten($color-border, 20%);
+$color-border-light: lighten($color-border, 10%);
+$color-border-dark: darken($color-border, 10%);
+$color-border-darker: darken($color-border, 20%);
+
+$color-text: rgba(155,171,205,1);
+
+$color-text-lighter: lighten($color-text, 20%);
+$color-text-light: lighten($color-text, 10%);
+$color-text-dark: darken($color-text, 10%);
+$color-text-darker: darken($color-text, 20%);
+
+$color-contrast: rgba(91,108,143,1);
+
+$color-contrast-lower: darken($color-contrast, 5%);
+$color-contrast-low: darken($color-contrast, 17%);
+$color-contrast-medium: darken($color-contrast, 52%);
+$color-contrast-high: darken($color-contrast, 80%);
+$color-contrast-high: darken($color-contrast, 88%);
+
+$color-heading: #103178;
+$color-dark: #333;
+$color-dark1: #182947;
+$color-gray: #9babcd;
+$color-gray1: rgba(16,49,120,0.1);
+$color-gray2: #f4f5f7;
+$color-gray4: #EDEDED;
+$color-yellow: #FFC800;
+$color-bg: rgba(247,248,250,1);
+$color-pink: #752a2b;
+$color-green: #00A198;
+$color-green1: #00605A;
+$color-gray3: #F5F5F5;
+
+// From design
+$color-gray-new: #5B6C8F;
+$color-orange-new: #ff9923;
+$color-gray-light:  #f0f2f5;

@@ -1,0 +1,99 @@
+/*
+    Project: My Medi HTML Template
+    Version: 1.0
+    Date Created: 20/02/2021
+    Developed by: nouthemes
+*/
+
+/*
+    TABLE OF CONTENT
+        1. RESET AND TYPHOGRAPHY
+            1.1 typhography
+        2. ELEMENTS
+            2.1 grid
+            2.2 list
+            2.3 button
+            2.4 form
+            2.5 post
+            2.6 pagination
+            2.7 breadcrumb
+            2.8 block
+            2.9 widget
+            2.10 slider
+            2.11 product
+            2.12 banner
+            2.13 filter
+            2.14 table
+            2.15 loader
+            2.16 modal
+            2.17 tabs
+            2.18 promo
+            2.19 blog
+        3. COMPONENTS
+             3.1 Cart
+             3.2 forms
+             3.3 search
+             3.4 section
+             3.5 pages
+             3.6 Notify
+             3.7 Countdown
+             3.8 Social
+             3.9 menu
+             3.10 landing
+             3.11 portfolio
+             3.12 coming
+        4. MODULES
+            4.1 header
+            4.2 footer
+        5. HELPERS
+        6. CUSTOM
+*/
+
+@import "utilies/mixin";
+@import "vendor/media_query";
+@import "vendor/bourbon/bourbon";
+
+@import "utilies/settings";
+/*1. RESET AND TYPHOGRAPHY */
+@import "base/typhography";
+/*2. ELEMENTS */
+@import "elements/grid";
+@import "elements/list";
+//@import "elements/button";
+@import "elements/form";
+@import "elements/post";
+@import "elements/pagination";
+@import "elements/breadcrumb";
+@import "elements/block";
+@import "elements/widget";
+@import "elements/slider";
+//@import "elements/product";
+@import "elements/banner";
+@import "elements/filter";
+@import "elements/table";
+@import "elements/loader";
+@import "elements/modal";
+@import "elements/tabs";
+@import "elements/promo";
+@import "elements/blog";
+
+/*3. COMPONENTS */
+@import "components/cart";
+@import "components/forms";
+@import "components/search";
+@import "components/section";
+@import "components/pages";
+@import "components/notify";
+@import "components/countdown";
+@import "components/social";
+@import "components/menu";
+@import "components/landing";
+@import "components/portfolio";
+@import "components/coming";
+/*4. MODULES */
+@import "modules/header";
+@import "modules/footer";
+/*5. HELPERS */
+@import "elements/helpers";
+
+@import "themes/effect";

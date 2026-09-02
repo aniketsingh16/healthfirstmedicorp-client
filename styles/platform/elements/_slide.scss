@@ -1,0 +1,242 @@
+.ps-carousel {
+
+    .slick-arrow {
+        @include vertical-align();
+        width: 56px;
+        height: 56px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 90;
+        background-color: transparent;
+        transition: all 0.4s ease;
+        @include hidden;
+
+        i {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        &:hover {
+            color: #fff;
+            background-color: $color-1st;
+        }
+
+        &.slick-prev {
+            left: -28px;
+        }
+
+        &.slick-next {
+            right: -28px;
+
+            i {
+                padding-left: 4px;
+            }
+        }
+    }
+
+    .slick-dots {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        list-style-type: none;
+        text-align: center;
+
+        > li {
+            margin-right: 12px;
+            vertical-align: top;
+            display: inline-block;
+
+            button {
+                display: block;
+                padding: 0;
+                font-size: 0;
+                border: none;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                transform: scale(0.6, 0.6);
+                background-color: rgba($color-1st, 0.2);
+                transition: all 0.4s ease-out;
+
+                &:hover {
+                    transform: scale(1, 1);
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.slick-active {
+                button {
+                    transform: scale(1, 1);
+                    background-color: $color-1st;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        .slick-arrow {
+            @include show;
+            background-color: $color-gray-light;
+
+            &:hover {
+                background-color: $color-1st;
+            }
+        }
+    }
+
+    &.outside {
+        @media screen and (min-width: 1366px) {
+            .slick-arrow {
+                &.slick-prev {
+                    left: -30px;
+                }
+
+                &.slick-next {
+                    right: -30px;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1440px) {
+            .slick-arrow {
+                &.slick-prev {
+                    left: -70px;
+                }
+
+                &.slick-next {
+                    right: -70px;
+                }
+            }
+        }
+    }
+
+    &.blur {
+        .slick-arrow {
+            background-color: rgba(#ccc, 0.5);
+
+            &:hover {
+                background-color: $color-1st;
+            }
+        }
+    }
+
+    &.ps-carousel--fullwidth {
+        @media screen and (min-width: 1200px) {
+            .slick-prev {
+                left: 0;
+            }
+            .slick-next {
+                right: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 992px) {
+        .slick-arrow {
+            display: none;
+        }
+
+
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .slick-dots {
+            @include hidden;
+            height: 0;
+        }
+    }
+}
+
+.ps-carousel--swiper {
+    position: relative;
+    z-index: 9;
+
+    .swiper-arrow {
+        @include vertical-align();
+        width: 56px;
+        height: 56px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 99;
+        background-color: transparent;
+        transition: all 0.4s ease;
+        color: #fff;
+        background-color: $color-1st;
+        cursor: pointer;
+        @include hidden;
+
+        &:after {
+            font-family: 'Linearicons';
+            font-size: 20px;
+            color: #fff;
+        }
+
+        &:hover {
+            background-color: $color-2nd;
+        }
+
+
+    }
+
+    .swiper-arrow--prev {
+        left: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    .swiper-arrow--next {
+        right: 0;
+        transform: translate(50%, -50%);
+
+        i {
+            padding-left: 4px;
+        }
+    }
+
+    &:hover {
+        .swiper-arrow {
+            @include show;
+        }
+
+        .swiper-button-prev, .swiper-button-next {
+            @include show;
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 0;
+    }
+
+    @media screen and (min-width: 1200px) {
+        .swiper-pagination {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+
+        .swiper-container {
+            padding-bottom: 20px;
+        }
+
+        .swiper-pagination {
+            bottom: 0;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .ps-carousel__navigation {
+            display: none;
+        }
+    }
+}
+
+

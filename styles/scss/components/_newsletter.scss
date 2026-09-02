@@ -1,0 +1,116 @@
+.ps-section--newsletter {
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .ps-section__title {
+        margin-bottom: 30px;
+        color: $color-1st;
+        font-size: 30px;
+        line-height: 36px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .ps-section__text {
+        color: $color-1st;
+        margin-bottom: 25px;
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    @media (min-width: 1024px) {
+        .ps-section__title {
+            font-size: 40px;
+            line-height: 50px;
+        }
+
+        .ps-section__text {
+            font-size: 24px;
+        }
+    }
+}
+
+.ps-section--newsletter-full {
+    .ps-section__title {
+        color: white;
+        text-align: left;
+    }
+
+    .ps-form--subscribe {
+        .ps-form__control {
+            max-width: 100%;
+        }
+
+        .ps-input {
+            color: $color-heading;
+            &::placeholder {
+                color: $color-heading;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .ps-section__content {
+            width: 50%;
+        }
+    }
+}
+
+.ps-section--newsletter-info {
+    background-size: cover;
+
+    .ps-section__title {
+        text-align: left;
+        color: white;
+        font-size: 28px;
+    }
+
+    .ps-form--subscribe {
+        justify-content: flex-start;
+
+        .ps-input {
+            color: $color-dark;
+
+            &::placeholder {
+                color: $color-dark;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .ps-section__title {
+            font-size: 30px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-section__title {
+            font-size: 40px;
+        }
+    }
+}
+
+.ps-section--newsletter-inline {
+    background-color: $color-gray3;
+    background-image: none;
+    padding: 50px 0;
+
+    .ps-section__title {
+        color: $color-dark;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    @media (min-width: 992px) {
+        .ps-section__title {
+            margin-bottom: 0;
+            text-align: left;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-section__title {
+            font-size: 25px;
+        }
+    }
+}

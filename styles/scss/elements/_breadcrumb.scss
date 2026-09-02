@@ -1,0 +1,31 @@
+.ps-breadcrumb {
+    list-style: none;
+    padding: 20px 0 !important;
+    margin: 0;
+    
+    &__item {
+        position: relative;
+        display: inline-block;
+        color: $color-1st;
+        font-size: 14px;
+        &:before {
+            content: '\203A';
+            display: inline-block;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: $color-1st;
+        }
+        a {
+            color: $color-1st;
+            font-size: 14px;
+            &:hover {
+                color: $color-warning;
+            }
+        }
+        &:first-child {
+            &:before {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,543 @@
+.ps-promo {
+    &__item {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+
+        &:hover {
+            .ps-promo__banner {
+                transform: scale(1.1,1.1);
+            }
+        }
+    }
+
+    &__title {
+        margin-bottom: 20px;
+        font-size: 30px;
+        line-height: 34px;
+        color: $color-1st;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    &__text {
+        position: absolute;
+        left: 40px;
+        top: 50%;
+        transform: translate(0,-50%);
+        max-width: calc( 100% - 40px );
+        max-height: calc( 100% - 40px );
+        z-index: 10;
+    }
+
+    &__banner {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 800ms ease 0s;
+        border-radius: 4px;
+    }
+
+    &__content {
+        position: absolute;
+        top: 50%;
+        transform: translate(-0,-50%);
+        left: 0;
+        padding: 25px 30px;
+    }
+
+    .ps-promo__badge {
+        padding: 1px 10px;
+        line-height: 18px;
+        display: inline-block;
+        text-transform: uppercase;
+        color: white;
+        background-color: $color-success;
+        font-size: 1.2rem;
+        text-align: center;
+        border-radius: 40px;
+        margin-bottom: 5px;
+    }
+
+    .ps-promo__name {
+        color: $color-1st;
+        margin-bottom: 5px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.3;
+
+        &.mb-20 {
+            margin-bottom: 20px;
+        }
+    }
+
+    .ps-promo__btn {
+        display: inline-block;
+        background-color: $color-1st;
+        color: white;
+        padding: 0px 25px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 40px;
+        border: 1px solid $color-1st;
+        line-height: 26px;
+
+        &:hover {
+            background-color: $color-warning;
+            border-color: $color-warning;
+        }
+    }
+
+    .ps-promo__sale {
+        color: $color-warning;
+        font-size: 30px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .ps-promo__price {
+        color: $color-yellow;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 0;
+    }
+
+    .ps-promo__del {
+        font-size: 18px;
+        color: #9babcd;
+        line-height: 30px;
+        font-weight: 500;
+        text-decoration: line-through;
+    }
+
+    .ps-promo__meta {
+        margin-bottom: 15px;
+        &.d-horizontal {
+            display: flex;
+        }
+    }
+
+    .ps-promo__icon {
+        margin-bottom: 25px;
+        img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        span {
+            color: $color-warning;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .ps-promo__image {
+        margin-bottom: 25px;
+
+        img {
+            max-height: 40px;
+        }
+    }
+
+    .col-12 {
+        padding-bottom: 10px !important;
+    }
+
+    &.ps-not-padding {
+        .col-12 {
+            padding-bottom: 0 !important;
+        }
+    }
+
+    .text-primary {
+        color: $color-1st !important;
+    }
+
+    .text-yellow {
+        color: $color-yellow;
+    }
+
+    .text-warning {
+        color: $color-warning !important;
+    }
+
+    .btn-warning {
+        background-color: $color-warning !important;
+        border-color: $color-warning !important;
+        &:hover {
+            background-color: $color-1st !important;
+            border-color: $color-1st !important;
+        }
+    }
+
+    .btn-yellow {
+        background-color: $color-yellow !important;
+        border-color: $color-yellow !important;
+        &:hover {
+            background-color: $color-1st !important;
+            border-color: $color-1st !important;
+            color: $color-yellow !important;
+        }
+    }
+
+    .btn-green {
+        background-color: $color-green1 !important;
+        border-color: $color-green1 !important;
+
+        &:hover {
+            background-color: $color-1st !important;
+            border-color: $color-1st !important;
+        }
+    }
+
+    .btn-white {
+        background-color: white !important;
+        border-color: white !important;
+        color: $color-dark;
+
+        &:hover {
+            background-color: $color-1st !important;
+            border-color: $color-1st !important;
+            color: white;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .col-12 {
+            padding-bottom: 0 !important;
+        }
+
+        &__content {
+            padding: 40px;
+        }
+
+        .ps-promo__name {
+            font-size: 15px;
+        }
+
+        .ps-promo__badge {
+            font-size: 12px;
+        }
+
+        .ps-promo__price, .ps-promo__sale {
+            font-size: 25px;
+        }
+
+        .ps-promo__del {
+            font-size: 21px;
+        }
+
+        .ps-promo__icon {
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media (min-width: 992px) {
+        .ps-promo__icon {
+            span {
+                font-size: 18px;
+            }
+        }
+
+        .ps-promo__name {
+            font-size: 25px;
+        }
+
+        .ps-promo__price, .ps-promo__sale {
+            font-size: 45px;
+        }
+
+        .ps-promo__btn {
+            font-size: 16px;
+            padding: 3px 30px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        &__title {
+            font-size: 40px;
+            line-height: 50px;
+        }
+    }
+}
+
+.ps-promo--mask {
+    overflow: hidden;
+    
+    .ps-banner {
+        background-color: #cccbc9;
+        height: auto;
+        min-height: 280px !important;
+
+        .ps-banner__title {
+            color: $color-heading;
+        }
+
+        .ps-banner__btn {
+            display: block;
+            padding: 0 0 10px 0;
+            font-size: 16px;
+            color: $color-heading;
+        }
+
+        .ps-banner__thumnail {
+            .ps-banner__image {
+                height: auto;
+                max-height: 300px;
+            }
+        }
+        .ps-banner__content {
+            height: auto;
+        }
+
+        .ps-banner__desc {
+            color: $color-heading;
+            font-size: 19px;
+        }
+
+        &.bg-white {
+            .ps-banner__content {
+                padding-top: 0;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .ps-banner {
+            .ps-banner__btn {
+                display: table-cell;
+                padding-right: 30px;
+            }
+            .ps-banner__content {
+                padding: 40px 0 40px 40px;
+                width: 50%;
+                flex: 0 0 50%;
+            }
+
+            .ps-banner__thumnail {
+                height: auto;
+                width: 50%;
+                flex: 0 0 50%;
+                .ps-banner__image {
+                    height: 80%;
+                    max-height: 100%;
+                    width: auto;
+                }
+            }
+
+            .row-reverse {
+                flex-direction: row-reverse;
+            }
+
+            &.bg-white {
+                .ps-banner__content {
+                    padding: 40px 40px 40px 0;
+                }
+
+                .ps-banner__thumnail {
+                    .ps-banner__image {
+                        height: 100%;
+                        max-width: 110%;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-banner {
+
+            .ps-banner__content {
+                padding: 100px 0 100px 70px;
+            }
+
+            .ps-banner__title {
+                font-size: 50px;
+                line-height: 60px;
+                margin-bottom: 20px;
+            }
+
+            .ps-banner__shop {
+                font-size: 18px;
+                margin-top: 15px;
+            }
+
+            .ps-banner__thumnail {
+                .ps-banner__image {
+                    height: 95%;
+                }
+            }
+
+            .ps-banner__desc {
+                font-size: 21px;
+            }
+
+            &.bg-white {
+                .ps-banner__content {
+                    padding: 60px 70px 60px 0;
+                }
+
+                .ps-banner__thumnail {
+                    .ps-banner__image {
+                        max-width: initial;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ps-promo--desc {
+    background-color: $color-gray2;
+    background-image: linear-gradient(to left, $color-gray2, #f3f7f8 80%);
+
+    .ps-banner {
+        height: auto;
+        .ps-banner__content {
+            height: auto;
+        }
+
+        .ps-banner__title {
+            margin-bottom: 25px;
+        }
+
+        .ps-banner__desc {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .ps-banner__btn {
+            font-size: 16px;
+            margin-bottom: 5px;
+            padding-right: 0;
+        }
+
+        .ps-banner__thumnail {
+            .ps-banner__image {
+                width: calc(100% + 30px);
+                margin-left: -15px;
+                max-width: none;
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        .ps-banner {
+            .ps-banner__block {
+                position: initial;
+                &.row-reverse {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            .ps-banner__thumnail {
+                position: initial;
+                .ps-banner__image {
+                    width: auto;
+                    margin-left: 0;
+                    height: 100%;
+                    top: 0;
+                    bottom: auto;
+                    left: 0;
+                    z-index: 0;
+                }
+            }
+
+            .ps-banner__content {
+                position: relative;
+                z-index: 10;
+                flex: 0 0 60%;
+                width: 60%;
+                padding: 80px 0;
+            }
+
+            .ps-banner__btn-group {
+                display: block;
+            }
+
+            .ps-banner__btn {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    @media (min-width: 992px) {
+        .ps-banner {
+            .ps-banner__content {
+                flex: 0 0 50%;
+                width: 50%;
+            }
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-banner {
+            .ps-banner__desc, .ps-banner__btn {
+                font-size: 18px;
+            }
+
+            .ps-banner__title {
+                font-size: 50px;
+                line-height: 64px;
+            }
+        }
+    }
+}
+
+.ps-promo--section {
+    .ps-promo__title {
+        font-size: 34px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: $color-1st;
+        font-weight: 600;
+    }
+
+    .ps-promo__subtitle {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 60px;
+        color: $color-contrast;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .ps-promo__footer {
+        text-align: center;
+
+        .ps-btn {
+            width: auto;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .ps-promo__title {
+            font-size: 40px;
+            line-height: 50px;
+        }
+
+        .ps-promo__subtitle {
+            font-size: 20px;
+            line-height: 26px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-promo__title {
+            font-size: 50px;
+            line-height: 60px;
+        }
+
+        .ps-promo__subtitle {
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+.ps-countdown {
+    overflow: hidden;
+    width: 100%;
+        text-align: center;
+
+    &__content {
+        height: 56px;
+        margin: 0 -8px;
+        display: inline-block;
+    }
+
+    &__number {
+        font-size: 22px;
+        
+        span {
+            min-width: 30px;
+            height: 40px;
+            line-height: 40px;
+            background-color: $color-warning;
+            color: white;
+            border-radius: 4px;
+            display: inline-block;
+            text-align: center;
+            margin: 0 1px;
+            font-weight: 600;
+            &.first-1st {
+                display: none;
+            }
+        }
+    }
+
+    &__block {
+        position: relative;
+        margin: 8px;
+        float: left;
+        width: auto;
+        
+        &:not(:last-child)::after {
+            content: ":";
+            display: inline-block;
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: -12px;
+            font-weight: bold;
+        }
+    }
+
+    &__ref {
+        font-size: 12px;
+        text-align: center;
+        color: $color-1st;
+        display: none;
+    }
+}

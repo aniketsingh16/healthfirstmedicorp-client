@@ -1,0 +1,36 @@
+#homepage-one {
+    .ps-section--newsletter, .ps-section--standard, .ps-section--instagram, .ps-home-promotion--one, .ps-home-promotions-two, .ps-delivery, .ps-testimonials {
+        margin-bottom: 40px;
+        @media screen and (min-width: 1200px) {
+            margin-bottom: 80px;
+        }
+    }
+
+    .ps-latest-products {
+        padding-top: 30px;
+        @media screen and (min-width: 1200px) {
+            padding-top: 60px;
+        }
+    }
+
+    .ps-section--banner {
+        margin-bottom: 40px;
+        @media screen and (min-width: 1200px) {
+            .ps-carousel {
+                .slick-dots {
+                    display: none;
+                    height: 0;
+                    transform: scale(0, 0);
+                }
+
+                .slick-prev {
+                    margin-left: 40px;
+                }
+
+                .slick-next {
+                    margin-right: 40px;
+                }
+            }
+        }
+    }
+}

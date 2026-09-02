@@ -1,0 +1,107 @@
+.ps-layout--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #f0f2f5;
+    border-left: 1px solid #f0f2f5;
+
+    .ps-layout__item {
+        overflow: hidden;
+        border-right: 1px solid #f0f2f5;
+        border-bottom: 1px solid #f0f2f5;
+    }
+
+    &.with-skeleton {
+
+        .ps-layout__item {
+            padding: 10px;
+            /*     border: none;*/
+            .ps-skeleton--product {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @media screen and (min-width: 480px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    @media screen and (min-width: 992px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media screen and (min-width: 1200px) {
+
+        &[data-columns="2"] {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &[data-columns="3"] {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        &[data-columns="4"] {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        &[data-columns="5"] {
+            grid-template-columns: repeat(5, 1fr);
+        }
+        &[data-columns="6"] {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.ps-layout--list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-gap: 0;
+    }
+}
+
+.ps-layout--with-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .ps-layout__left {
+        display: none;
+    }
+
+    @media screen and (min-width: 1200px) {
+        grid-template-columns: 218px 1fr;
+        grid-gap: 30px;
+        min-height: 80vh;
+
+        .ps-layout__left {
+            display: block;
+        }
+
+        &.ps-reverse {
+            grid-template-columns: 1fr 218px;
+
+            .ps-layout__left {
+                grid-column-start: 2;
+            }
+
+            .ps-layout__right {
+                grid-column-start: 1;
+                grid-row-start: 1;
+            }
+
+            .ps-layout__right {
+                max-width: 992px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .ps-layout__right {
+            max-width: 100vw;
+        }
+    }
+}

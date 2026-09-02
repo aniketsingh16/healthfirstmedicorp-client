@@ -1,0 +1,140 @@
+/* Ask AI modal. Self-contained, `chatm` prefix, no theme dependencies. */
+
+$chatm-navy:   #103178;
+$chatm-border: #dfe6f0;
+
+// Docked to the bottom-right, no backdrop. Only the panel itself is fixed, so
+// the rest of the page stays interactive — a full-screen overlay, even a
+// transparent one, would swallow every click behind it.
+.chatm__dock {
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    z-index: 2100;              // above the callback popup (2000)
+    animation: chatm-fade 0.2s ease;
+}
+
+// Set on <body> while the panel is open. The WhatsApp button and back-to-top
+// occupy this same corner; leaving them there means an opaque panel covering
+// two controls the user can see the edges of but cannot click.
+body.chat-open {
+    .whatsapp-button,
+    .ps-backtop,
+    .ant-back-top {
+        display: none !important;
+    }
+}
+
+.chatm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    max-width: calc(100vw - 48px);
+    // Tall, but never taller than the viewport — the iframe scrolls internally.
+    height: min(570px, calc(100vh - 56px));
+    // Clips the iframe's square corners to the panel's rounded ones. Without
+    // this the agent's black header would square off the top two corners.
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    animation: chatm-rise 0.25s ease;
+    outline: none;
+}
+
+// Overlays the X inside the agent's own header. Transparent, so what you see
+// is Chatbase's icon; what you click is this button.
+//
+// `top` / `right` are tuned to the agent's header. If Chatbase changes its
+// header height or padding these two numbers are the only thing to re-align.
+.chatm__close {
+    position: absolute;
+    top: 14px;
+    // The agent renders its "..." hard against the right edge, so this sits to
+    // its left. Raise the number to move further left, lower to close the gap.
+    right: 56px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: #000;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    // Visible: the iframe embed renders no close control of its own, unlike the
+    // bubble widget, so this is the only way out of the panel.
+    opacity: 1;
+    transition: opacity 0.15s ease, background-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+}
+
+.chatm__frame {
+    flex: 1 1 auto;
+    width: 100%;
+    border: 0;
+    display: block;
+}
+
+/* The nav item is a <button>; make it match the surrounding menu links. */
+.menu-item--action > button {
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@keyframes chatm-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes chatm-rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 575px) {
+    // Full-bleed on phones — a 500px docked panel has nowhere to dock.
+    .chatm__dock {
+        inset: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .chatm {
+        width: 100%;
+        max-width: none;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .chatm__close {
+        top: 10px;
+        right: 52px;
+    }
+}
+
+.gradient-heading {
+  font-size: 4.5rem; // text-7xl
+  font-weight: 800;  // font-extrabold
+  line-height: 1;    // text-7xl in Tailwind also sets line-height: 1
+
+  .gradient-highlight {
+    background-image: linear-gradient(to right, #fb923c, #ef4444, #9333ea); // orange-400 via red-500 to purple-600
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}

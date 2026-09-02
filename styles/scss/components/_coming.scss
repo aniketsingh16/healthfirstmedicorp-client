@@ -1,0 +1,130 @@
+.ps-coming {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+
+    .container {
+        position: relative;
+        display: flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    .ps-logo {
+        position: absolute;
+        top: 30px;
+        left: 15px;
+
+        img {
+            max-width: 144px;
+        }
+    }
+
+    &__title {
+        color: white;
+        font-size: 34px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+
+    &__text {
+        font-size: 24px;
+        margin-bottom: 24px;
+        color: white;
+    }
+
+    .ps-countdown {
+        text-align: left;
+    }
+
+    .ps-countdown__block {
+        &::after {
+            color: white;
+        }
+    }
+
+    .ps-countdown__ref {
+        display: block;
+        color: white;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .ps-countdown__content {
+        height: 80px;
+    }
+
+    .ps-countdown__number {
+        font-size: 20px;
+        span {
+            min-width: 26px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        &__title {
+            font-size: 70px;
+            line-height: 80px;
+        }
+        
+        .ps-countdown__number {
+            span {
+               min-width: 30px;
+                height: 44px;
+                line-height: 44px;
+            }
+        }
+
+        .ps-countdown__content {
+            height: 100px;
+        }
+
+        .ps-countdown__block:not(:last-child) {
+            &::after {
+                top: 6px;
+            }
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-countdown__number {
+            font-size: 26px;
+            span {
+                min-width: 40px;
+                height: 60px;
+                line-height: 60px;
+            }
+        }
+
+        .ps-countdown__block:not(:last-child) {
+            &::after {
+                top: 15px;
+            }
+        }
+
+        .ps-logo {
+            img {
+                max-width: 220px;
+            }
+        }
+    }
+}
+
+.ps-coming--v1 {
+    .ps-coming__title, .ps-coming__text {
+        color: $color-1st;
+    }
+
+    .ps-countdown__block {
+        &::after {
+            color: $color-1st;
+        }
+    }
+
+    .ps-countdown__ref {
+        display: none;
+    }
+}

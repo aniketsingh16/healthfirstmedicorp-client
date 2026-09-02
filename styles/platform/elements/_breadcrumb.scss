@@ -1,0 +1,23 @@
+.breadcrumb {
+    margin-bottom: 0;
+    border: none;
+    background-color: transparent;
+    padding: 25px 0 0 0;
+
+    li {
+        color: $color-1st;
+        font-size: 14px;
+
+        a {
+            color: $color-gray-new;
+            font-size: 14px;
+
+            &:after {
+                content: "\f105";
+                font-family: FontAwesome;
+                padding: 0 15px;
+
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.ps-noti {
+    background-color: $color-1st;
+    position: relative;
+    p {
+        color: $color-2nd;
+        font-size: 15px;
+        line-height: 20px;
+        padding: 8px 35px 8px 0;
+        text-align: center;
+    }
+    &__close {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        color: $color-2nd !important;
+        display: block;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+}

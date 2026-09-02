@@ -1,0 +1,133 @@
+.ant-select-dropdown {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .ant-select-item-option-content {
+        font-size: 14px;
+    }
+
+    .ant-select-item-option {
+        padding: 6px 10px;
+
+        .ant-select-item-option-selected {
+            background-color: $color-1st;
+        }
+    }
+}
+
+.ant-dropdown {
+    .ant-dropdown-menu-item {
+        a {
+            font-size: 14px !important;
+            font-weight: 400;
+        }
+    }
+}
+
+.ant-skeleton {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.ant-drawer {
+    z-index: 99999;
+
+    .ant-drawer-body {
+        padding: 0;
+    }
+}
+
+.ant-alert {
+    .ant-alert-message {
+        font-size: 14px;
+        color: $color-heading;
+    }
+}
+
+.ant-modal {
+    .ant-modal-content {
+        .ant-modal-confirm-body {
+            .ant-modal-confirm-title {
+                font-size: 16px;
+            }
+
+            .ant-modal-confirm-content {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+.ant-back-top {
+    right: 25px;
+
+    .ps-btn--backtop {
+
+        border: none;
+        width: 46px;
+        height: 46px;
+        border-radius: 4px;
+        background-color: $color-gray-light;
+
+        i {
+            position: relative;
+            top: 4px;
+            font-size: 18px;
+        }
+
+        &:hover {
+            background-color: $color-2nd;
+
+            i {
+                color: $color-heading;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        // right: 0;
+        bottom: 70px;
+        .ps-btn--backtop {
+            height: 32px;
+            width: 32px;
+        }
+    }
+}
+
+
+// antd v6's BackTop references an `ant-fade` motion its stylesheet never
+// generates, so neither the enter nor leave animation ever completes, the
+// child is never unmounted, and `.ant-back-top:empty { display: none }`
+// can never fire.
+.ant-back-top {
+    .ant-fade-enter,
+    .ant-fade-appear,
+    .ant-fade-leave {
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+        animation-play-state: paused;
+    }
+
+    .ant-fade-enter.ant-fade-enter-active,
+    .ant-fade-appear.ant-fade-appear-active {
+        animation-name: backtopFadeIn;
+        animation-play-state: running;
+    }
+
+    .ant-fade-leave.ant-fade-leave-active {
+        animation-name: backtopFadeOut;
+        animation-play-state: running;
+        pointer-events: none;
+    }
+}
+
+@keyframes backtopFadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes backtopFadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; }
+}

@@ -1,0 +1,23 @@
+Here's the schema I'd recommend:
+
+customers
+id, first_name, last_name, email, mobile, created_at
+→ One row per person. If the same email checks out again later, you can look them up instead of creating a duplicate.
+
+addresses
+id, customer_id (FK), company_name, address_line1, address_line2, pincode, city, state, is_default, created_at
+→ Kept separate from orders so a customer can have multiple saved addresses (matches your "Save this address for future orders" checkbox).
+
+orders
+id, order_number, customer_id (FK), address_id (FK), delivery_method, subtotal, shipping_cost, tax, total, status (pending / confirmed / cancelled etc.), created_at
+→ One row per checkout.
+
+order_items
+id, order_id (FK), product_id, product_name, unit_price, quantity, line_total
+→ One row per cart line. Note: product_name and unit_price are snapshotted here, not just referenced from your live products table — if the product's price or name changes later, historical orders shouldn't retroactively change.
+
+payments
+id, order_id (FK), method (card/upi/cod), status (pending/skipped/paid/failed), amount, provider, transaction_id (nullable), created_at
+→ Kept separate from orders because an order can have 0 or multiple payment attempts (retries, refunds later), and since you're skipping the gateway for now, this row can just be status: "skipped" with transaction_id: null — ready to wire up real fields once you integrate a gateway.
+
+Why not one table: cart items are inherently a list (needs its own table or JSON — JSON loses queryability), address needs to be reusable/historical, and payment needs to support retries/multiple attempts independent of the order row. Splitting it also means adding features later (order history page, "reorder," refunds, multiple saved addresses) doesn't require restructuring.

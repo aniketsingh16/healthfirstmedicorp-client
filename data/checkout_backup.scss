@@ -1,0 +1,833 @@
+// ==========================================================================
+// Checkout Wizard — Global SCSS
+// Import in layout.js alongside your other global styles, e.g.:
+//   import "@/styles/scss/checkout.scss";
+// ==========================================================================
+
+$checkout-navy: #103178;
+$checkout-orange: #fd8d27;
+$checkout-text: #1f2937;
+$checkout-muted: #9aa3af;
+$checkout-border: #e2e5e9;
+$checkout-bg-soft: #f7f8fa;
+$checkout-success: #2fa87e;
+$checkout-radius: 12px;
+$checkout-radius-pill: 999px;
+
+// -- Wizard shell ----------------------------------------------------------
+.ps-checkout-wizard {
+    &__progress {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    &__step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        cursor: default;
+        padding: 0;
+
+        &:not(:disabled) {
+            cursor: pointer;
+        }
+    }
+
+    &__step-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: $checkout-muted;
+        background: #fff;
+        border: 2px solid $checkout-border;
+        transition: all 0.2s ease;
+    }
+
+    &__step-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: $checkout-muted;
+    }
+
+    &__step--active {
+        .ps-checkout-wizard__step-circle {
+            background: $checkout-navy;
+            border-color: $checkout-navy;
+            color: #fff;
+        }
+        .ps-checkout-wizard__step-label {
+            color: $checkout-navy;
+        }
+    }
+
+    &__step--completed {
+        .ps-checkout-wizard__step-circle {
+            background: $checkout-orange;
+            border-color: $checkout-orange;
+            color: #fff;
+        }
+        .ps-checkout-wizard__step-label {
+            color: $checkout-text;
+        }
+    }
+
+    &__connector {
+        width: 48px;
+        height: 2px;
+        background: $checkout-border;
+        margin-bottom: 22px;
+
+        &--completed {
+            background: $checkout-orange;
+        }
+    }
+
+    &__body {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 32px;
+        align-items: start;
+
+        @media screen and (max-width: 991px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__main {
+        min-width: 0;
+    }
+
+    &__nav {
+        margin-top: 24px;
+    }
+
+    &__back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        color: $checkout-muted;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 8px 0;
+
+        &:hover {
+            color: $checkout-navy;
+        }
+    }
+}
+
+// -- Shared card shell -------------------------------------------------
+.ps-checkout-card {
+    background: #fff;
+    border: 1px solid $checkout-border;
+    border-radius: $checkout-radius;
+    padding: 32px;
+
+    &--stacked {
+        margin-top: 24px;
+    }
+
+    &--loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 320px;
+    }
+
+    &__heading {
+        font-size: 22px;
+        font-weight: 700;
+        color: $checkout-navy;
+        margin-bottom: 24px;
+    }
+}
+
+// -- Between-step loader -------------------------------------------------
+.ps-step-loader__spinner {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border: 3px solid $checkout-border;
+    border-top-color: $checkout-orange;
+    border-radius: 50%;
+    animation: ps-step-loader-spin 0.7s linear infinite;
+}
+
+@keyframes ps-step-loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// -- Address form ------------------------------------------------------
+// This is your ORIGINAL .ps-checkout-form block with the new bits merged in.
+// Replace your existing .ps-checkout-form block in checkout.scss with this one.
+// New/changed lines are marked with an "// ADDED" comment.
+
+.ps-checkout-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &__group {
+        width: 100%;
+
+        &--half {
+            width: calc(50% - 10px);
+
+            @media screen and (max-width: 575px) {
+                width: 100%;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: $checkout-navy;
+            margin-bottom: 8px;
+
+            .required {
+                color: #e0507a;
+                margin-left: 3px;
+            }
+        }
+    }
+
+    &__input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid $checkout-border;
+        border-radius: $checkout-radius-pill;
+        padding: 12px 18px;
+        transition: border-color 0.15s ease;
+        position: relative; // ADDED — anchors the pincode spinner
+
+        &:focus-within {
+            border-color: $checkout-navy;
+        }
+
+        i {
+            color: $checkout-muted;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: $checkout-text;
+            background: transparent;
+            min-width: 0;
+
+            &::placeholder {
+                color: #c7cdd6;
+            }
+        }
+
+        // ADDED — grayed-out disabled state for city/state
+        &--disabled {
+            background: $checkout-bg-soft;
+            border-color: $checkout-border;
+            // cursor: not-allowed;
+
+            input {
+                color: $checkout-muted;
+                // cursor: not-allowed;
+
+                &::placeholder {
+                    color: $checkout-muted;
+                }
+            }
+
+            i {
+                color: $checkout-border;
+            }
+        }
+    }
+
+    // ADDED — spinner shown next to pincode while fetching
+    &__input-status {
+        color: $checkout-orange !important;
+        margin-left: auto;
+    }
+
+    // ADDED — inline error text under pincode on lookup failure
+    &__error {
+        display: block;
+        font-size: 12px;
+        color: #e0507a;
+        margin-top: 6px;
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: $checkout-text;
+        cursor: pointer;
+
+        input {
+            width: 16px;
+            height: 16px;
+            accent-color: $checkout-navy;
+        }
+    }
+}
+
+// -- Delivery method cards -----------------------------------------------
+.ps-option-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ps-option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    background: $checkout-bg-soft;
+    border: 2px solid transparent;
+    border-radius: $checkout-radius;
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+        border-color: $checkout-border;
+    }
+
+    &__icon {
+        font-size: 20px;
+        color: $checkout-navy;
+        margin-bottom: 6px;
+    }
+
+    &__title {
+        font-size: 15px;
+        font-weight: 600;
+        color: $checkout-text;
+    }
+
+    &__subtitle {
+        font-size: 13px;
+        color: $checkout-muted;
+    }
+
+    &__price {
+        font-size: 14px;
+        font-weight: 700;
+        color: $checkout-orange;
+        margin-top: 4px;
+    }
+
+    &--selected {
+        background: #fff;
+        border-color: $checkout-orange;
+        box-shadow: 0 4px 14px rgba(253, 141, 39, 0.15);
+    }
+}
+
+// -- Payment method rows ---------------------------------------------
+.ps-payment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ps-payment-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: $checkout-bg-soft;
+    border: 2px solid transparent;
+    border-radius: $checkout-radius;
+    padding: 16px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    width: 100%;
+
+    &:hover {
+        border-color: $checkout-border;
+    }
+
+    &__icon {
+        font-size: 18px;
+        color: $checkout-navy;
+        width: 24px;
+        flex-shrink: 0;
+    }
+
+    &__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__title {
+        font-size: 15px;
+        font-weight: 600;
+        color: $checkout-text;
+    }
+
+    &__subtitle {
+        font-size: 13px;
+        color: $checkout-muted;
+    }
+
+    &__radio {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid $checkout-border;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    &__radio-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: transparent;
+    }
+
+    &--selected {
+        background: #fff;
+        border-color: $checkout-orange;
+        box-shadow: 0 4px 14px rgba(253, 141, 39, 0.15);
+
+        .ps-payment-row__radio {
+            border-color: $checkout-orange;
+        }
+        .ps-payment-row__radio-dot {
+            background: $checkout-orange;
+        }
+    }
+}
+
+// -- Cart step table -----------------------------------------------------
+.ps-cart-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead th {
+        text-align: left;
+        font-size: 13px;
+        font-weight: 700;
+        color: $checkout-navy;
+        padding: 0 12px 12px;
+        border-bottom: 1px solid $checkout-border;
+
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4) {
+            text-align: center;
+        }
+    }
+
+    tbody td {
+        padding: 16px 12px;
+        border-bottom: 1px solid $checkout-border;
+        vertical-align: middle;
+        text-align: center;
+
+        &:first-child {
+            text-align: left;
+        }
+    }
+
+    &__product {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    &__remove {
+        border: none;
+        background: none;
+        color: #e0507a;
+        cursor: pointer;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    &__thumb {
+        width: 56px;
+        height: 56px;
+        border-radius: 8px;
+        background: $checkout-bg-soft;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        i {
+            color: $checkout-muted;
+        }
+    }
+
+    &__product-body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        text-align: left;
+    }
+
+    &__product-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: $checkout-navy;
+    }
+
+    &__product-price {
+        font-size: 13px;
+        color: $checkout-muted;
+    }
+
+    &__stepper {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: $checkout-bg-soft;
+        border-radius: $checkout-radius-pill;
+        padding: 6px 14px;
+
+        button {
+            border: none;
+            background: none;
+            color: $checkout-text;
+            font-size: 16px;
+            cursor: pointer;
+            width: 18px;
+            line-height: 1;
+
+            &:disabled {
+                color: $checkout-border;
+                cursor: not-allowed;
+            }
+        }
+
+        span {
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 16px;
+        }
+    }
+
+    &__empty {
+        font-size: 14px;
+        color: $checkout-muted;
+
+        a {
+            color: $checkout-orange;
+            font-weight: 600;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    &__coupon {
+        display: flex;
+        gap: 10px;
+
+        input {
+            border: none;
+            background: $checkout-bg-soft;
+            border-radius: $checkout-radius-pill;
+            padding: 10px 18px;
+            font-size: 14px;
+            min-width: 220px;
+
+            &::placeholder {
+                color: $checkout-muted;
+            }
+        }
+    }
+}
+
+// -- Review step --------------------------------------------------------
+.ps-review-block {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $checkout-border;
+
+    &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: $checkout-navy;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 14px;
+        color: $checkout-text;
+        line-height: 1.6;
+
+        span {
+            color: $checkout-muted;
+        }
+    }
+}
+
+// -- Order summary sidebar -----------------------------------------------
+.ps-order-summary {
+    background: #fff;
+    border: 2px solid $checkout-orange;
+    border-radius: $checkout-radius;
+    padding: 28px;
+    position: sticky;
+    top: 24px;
+
+    &__heading {
+        font-size: 20px;
+        font-weight: 700;
+        color: $checkout-navy;
+        margin-bottom: 20px;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-height: 280px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $checkout-border;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $checkout-border;
+            border-radius: 10px;
+        }
+    }
+
+    &__empty {
+        font-size: 13px;
+        color: $checkout-muted;
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__item-thumb {
+        position: relative;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: $checkout-bg-soft;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        i {
+            color: $checkout-muted;
+        }
+    }
+
+    &__item-qty {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: $checkout-navy;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item-body {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__item-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: $checkout-text;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__item-price {
+        font-size: 13px;
+        font-weight: 600;
+        color: $checkout-muted;
+    }
+
+    &__totals {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        color: $checkout-text;
+
+        span:first-child {
+            color: $checkout-muted;
+        }
+
+        &--total {
+            padding-top: 12px;
+            border-top: 1px solid $checkout-border;
+            font-size: 17px;
+            font-weight: 700;
+            color: $checkout-navy;
+
+            span:first-child {
+                color: $checkout-navy;
+            }
+        }
+    }
+
+    &__terms {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        color: $checkout-text;
+        margin-bottom: 20px;
+        cursor: pointer;
+        line-height: 1.5;
+
+        input {
+            margin-top: 2px;
+            width: 16px;
+            height: 16px;
+            accent-color: $checkout-navy;
+            flex-shrink: 0;
+        }
+
+        .required {
+            color: #e0507a;
+        }
+    }
+
+    &__cta {
+        width: 100%;
+        background: $checkout-orange;
+        color: #fff;
+        border: none;
+        border-radius: $checkout-radius-pill;
+        padding: 10px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s ease;
+
+        &:hover:not(:disabled) {
+            background: darken($checkout-orange, 8%);
+        }
+
+        &:disabled {
+            background: $checkout-border;
+            color: $checkout-muted;
+            cursor: not-allowed;
+        }
+    }
+
+    &__secure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-size: 12px;
+        color: $checkout-muted;
+        margin-top: 16px;
+    }
+}
+
+button.ps-cart-item__remove {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+}

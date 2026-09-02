@@ -1,0 +1,79 @@
+{
+    "header_supplies": [
+        {
+            "text": "Diagnosis",
+            "url": "/shop"
+        },
+        {
+            "text": "Accessories Tools",
+            "url": "/shop"
+        },
+        {
+            "text": "Bandages",
+            "url": "/shop"
+        },
+        {
+            "text": "Biopsy tools",
+            "url": "/shop"
+        },
+        {
+            "text": "Blades",
+            "url": "/shop"
+        },
+        {
+            "text": "Blood pressure",
+            "url": "/shop"
+        },
+        {
+            "text": "Capsules",
+            "url": "/shop"
+        },
+        {
+            "text": "Dental",
+            "url": "/shop"
+        },
+        {
+            "text": "Devices",
+            "url": "/shop"
+        },
+        {
+            "text": "Diagnostic tests",
+            "url": "/shop"
+        },
+        {
+            "text": "Disposable products",
+            "url": "/shop"
+        },
+        {
+            "text": "Education",
+            "url": "/shop"
+        },
+        {
+            "text": "Endoscopes",
+            "url": "/shop"
+        },
+        {
+            "text": "Equipment",
+            "url": "/shop"
+        },
+        {
+            "text": "Show all",
+            "url": "/shop"
+        }
+    ],
+    "header__supplies_banners": [
+        {
+            "banner": "img/promotion/bg-banner4.jpg",
+            "badge": "New",
+            "title": "Get rid of bacteria <br/>in your home",
+            "btnName": "More",
+            "classTitle": "mb-20"
+        },
+        {
+            "banner": "img/promotion/bg-banner5.jpg",
+            "title": "Candid <br/>Whitening Kit",
+            "btnName": "Shop now",
+            "sale": "-10%"
+        }
+    ]
+}

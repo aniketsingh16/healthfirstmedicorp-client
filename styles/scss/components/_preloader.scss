@@ -1,0 +1,55 @@
+.ps-preloader {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+    .ps-preloader-section {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 50%;
+        background-color: white;
+        z-index: 1000;
+        transition: transform 0.5s $ease-in-out-cubic;
+    }
+
+    .ps-preloader-left {
+        left: 0;
+        transform: translateX(-100%);
+        animation: moveleft 0.5s;
+    }
+
+    .ps-preloader-right {
+        right: 0;
+        transform: translateX(100%);
+        animation: moveright 0.5s;
+    }
+    
+
+    .ps-preloader__icon {
+        position: relative;
+        height: 90px;
+        width: 150px;
+    }
+}
+
+@keyframes moveleft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes moveright {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+    }
+}

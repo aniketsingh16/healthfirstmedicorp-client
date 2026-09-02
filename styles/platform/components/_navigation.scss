@@ -1,0 +1,318 @@
+.navigation--primary {
+    position: relative;
+
+    .header__categories, .header__supplies {
+        margin-right: 16px;
+    }
+
+    .navigation__menu {
+        padding-left: 10px;
+    }
+
+    .navigation__left {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .navigation__right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+
+        // The number is a <p>; its default bottom margin would sit it a few
+        // pixels above the Ask AI text in a centred flex row.
+        .ps-text--contact-number {
+            margin-bottom: 0;
+        }
+    }
+
+    > .container {
+        display: grid;
+        // `auto` rather than a fixed 300px: the right column holds the number
+        // AND the Ask AI trigger, which together exceed 300px.
+        grid-template-columns: 1fr auto;
+    }
+}
+
+/* Header Ask AI trigger.
+   Still a <button> — it performs an action rather than navigating, so the
+   element stays correct for keyboard and screen readers — but stripped back to
+   read as text alongside the phone number. */
+.ps-btn--ask-ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+
+    background: #4E50BE; // ← fallback solid color
+    background: radial-gradient(circle farthest-corner at center center, #4E50BE 24%, #15AA8F 100%); // ← updated gradient
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        display: inline-block;
+
+        background: #4E50BE; // ← same swap here
+        background: radial-gradient(circle farthest-corner at center center, #4E50BE 24%, #15AA8F 100%);
+
+        $sparkle: url("/static/img/icon/sparkles-2.svg");
+        -webkit-mask: $sparkle no-repeat center / contain;
+        mask: $sparkle no-repeat center / contain;
+    }
+
+    &:hover,
+    &:focus-visible {
+        filter: drop-shadow(0 0 6px rgba(78, 80, 190, 0.6)); // ← glow updated to the #4E50BE end
+    }
+}
+   
+// .ps-btn--ask-ai {
+//     display: inline-flex;
+//     align-items: center;
+//     gap: 7px;
+//     flex-shrink: 0;
+//     padding: 0;
+//     font-size: 16px;
+//     font-weight: 400;
+//     letter-spacing: 0.01em;
+//     line-height: 1.2;
+//     white-space: nowrap;
+//     background: none;
+//     border: none;
+//     cursor: pointer;
+
+//     // Gradient text
+//     background-image: linear-gradient(to right, #fb923c, #ef4444, #9333ea);
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     transition: opacity 0.25s ease;
+
+//     &__icon {
+//         width: 16px;
+//         height: 16px;
+//         flex-shrink: 0;
+//         display: inline-block;
+
+//         // Icon gets the same gradient as a background, masked to the sparkle shape
+//         background-image: linear-gradient(to right, #fb923c, #ef4444, #9333ea);
+
+//         $sparkle: url("/static/img/icon/sparkles-2.svg");
+//         -webkit-mask: $sparkle no-repeat center / contain;
+//         mask: $sparkle no-repeat center / contain;
+//     }
+
+//     &:hover,
+//     &:focus-visible {
+//         opacity: 0.85;
+//     }
+// }
+
+.navigation--single {
+    position: relative;
+    .header__categories, .header__supplies {
+        margin-right: 16px;
+    }
+
+    > .container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+// .navigation--bottom {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     padding: 15px 30px;
+//     box-shadow: 1px 0 0;
+//     background-color: #ffffff;
+//     border-top: 1px solid $color-gray-light;
+//     z-index: 999;
+
+//     .cart {
+//         position: relative;
+
+//         span {
+//             position: absolute;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             top: 0;
+//             right: 0;
+//             width: 18px;
+//             height: 18px;
+//             border-radius: 50%;
+//             background-color: $color-1st;
+//             transform: translateX(50%);
+//             color: #fff;
+//             font-size: 10px;
+//         }
+//     }
+
+
+//     .navigation__item {
+//         text-align: center;
+//         color: $color-2nd;
+
+//         i {
+//             font-size: 24px;
+//         }
+
+//         span {
+//             display: block;
+//         }
+
+//         &.active {
+//             i {
+//                 color: $color-1st;
+//             }
+
+//             span {
+//                 color: $color-1st;
+//             }
+//         }
+//     }
+
+//     .navigation__content {
+//         max-width: 300px;
+//         margin: 0 auto;
+//         display: flex;
+//         flex-flow: row nowrap;
+//         justify-content: space-between;
+//         align-items: center;
+//     }
+
+
+//     &.active {
+//     }
+
+//     @media screen and (min-width: 1024px) {
+//         .navigation__content {
+//             max-width: 600px;
+//         }
+//     }
+
+//     @media screen and (min-width: 1200px) {
+//         display: none;
+//     }
+// }
+
+.navigation--bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px;
+    box-shadow: 1px 0 0;
+    background-color: #ffffff;
+    border-top: 1px solid $color-gray-light;
+    z-index: 999;
+
+    .user-avatar-mobile {
+        width: 28px;
+        height: 28px;
+    }
+ 
+    .sign-in-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        font-size: 18px;
+ 
+        &:hover {
+            background-color: #f5f5f5;
+        }
+    }
+
+    .navigation__item {
+        text-align: center;
+        color: $color-2nd;
+
+        i {
+            font-size: 24px;
+        }
+
+        span {
+            display: block;
+        }
+
+        &.active {
+            i {
+                color: $color-1st;
+            }
+
+            span {
+                color: $color-1st;
+            }
+        }
+
+        &.cart,
+        &.wishlist {
+            position: relative;
+
+            span {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+                right: 0;
+                transform: translate(50%, -50%);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #103178;
+                color: #fff;
+                font-size: 10px;
+                line-height: 1;
+            }
+        }
+    }
+
+    .navigation__content {
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .navigation__content {
+            max-width: 600px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        display: none;
+    }
+}
+

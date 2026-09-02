@@ -1,0 +1,48 @@
+/**
+ * Admin-only styles. Imported by app/(admin)/layout.jsx.
+ *
+ * MUI handles the screen UI; this file exists for the one thing a component
+ * library cannot express — what the page becomes on paper.
+ */
+
+@media print {
+  // Anything chrome-like: sidebar, topbar, buttons, status picker.
+  .no-print,
+  header,
+  nav,
+  .MuiDrawer-root {
+    display: none !important;
+  }
+
+  // The shell offsets content by the sidebar width and paints a grey page
+  // background. On paper both are wrong.
+  body,
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fff !important;
+  }
+
+  main {
+    padding-left: 0 !important;
+  }
+
+  // The invoice is the page — no card border, no shadow, no rounding.
+  .invoice-sheet,
+  .invoice-document {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  // Keep a line item from being split across two sheets.
+  tr {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+}

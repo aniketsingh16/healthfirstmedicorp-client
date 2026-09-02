@@ -1,0 +1,275 @@
+{
+    "information": {
+        "title": "Information",
+        "items": [
+            {
+                "text": "About us",
+                "url": "about-us.html"
+            },
+            {
+                "text": "Delivery information",
+                "url": "#"
+            },
+            {
+                "text": "Privacy Policy",
+                "url": "#"
+            },
+            {
+                "text": "Sales",
+                "url": "#"
+            },
+            {
+                "text": "Terms & Conditions",
+                "url": "#"
+            }
+        ]
+    },
+    "account": {
+        "title": "Account",
+        "items": [
+            {
+                "text": "My account",
+                "url": "#"
+            },
+            {
+                "text": "My orders",
+                "url": "#"
+            },
+            {
+                "text": "Returns",
+                "url": "#"
+            },
+            {
+                "text": "Shipping",
+                "url": "#"
+            },
+            {
+                "text": "Wishlist",
+                "url": "wishlist.html"
+            }
+        ]
+    },
+    "store": {
+        "title": "Store",
+        "items": [
+            {
+                "text": "Affiliate",
+                "url": "#"
+            },
+            {
+                "text": "Bestsellers",
+                "url": "#"
+            },
+            {
+                "text": "Discount",
+                "url": "#"
+            },
+            {
+                "text": "Latest products",
+                "url": "#"
+            },
+            {
+                "text": "Sale",
+                "url": "#"
+            }
+        ]
+    },
+    "woundCare": {
+        "title": "Wound Care",
+        "items": [
+            {
+                "text": "Bandages",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Gypsum foundations",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Patches and tapes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Stomatology",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Surgical sutures",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Uniforms",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Wound healing",
+                "url": "category-grid.html"
+            }
+        ]
+    },
+    "higiene": {
+        "title": "Higiene",
+        "items": [
+            {
+                "text": "Disposable products",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Face masks",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Gloves",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Protective covers",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Sterilization",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Surgical foils",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Uniforms",
+                "url": "category-grid.html"
+            }
+        ]
+    },
+    "laboratory": {
+        "title": "Laboratory",
+        "items": [
+            {
+                "text": "Devices",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Diagnostic tests",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Disinfectants",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Dyes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Pipettes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Test-tubes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Tubes",
+                "url": "category-grid.html"
+            }
+        ]
+    },
+    "tools": {
+        "title": "Tools",
+        "items": [
+            {
+                "text": "Accessories Tools",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Blood pressure",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Capsules",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Dental",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Micrscope",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Pressure",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Sugar level",
+                "url": "category-grid.html"
+            }
+        ]
+    },
+    "diagnosis": {
+        "title": "Diagnosis",
+        "items": [
+            {
+                "text": "Biopsy tools",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Endoscopes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Monitoring",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Otoscopes",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Oxygen concentrators",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Tables and assistants",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Thermometer",
+                "url": "category-grid.html"
+            }
+        ]
+    },
+    "equipment": {
+        "title": "Equipment",
+        "items": [
+            {
+                "text": "Blades",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Education",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Germicidal lamps",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Heart Health",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Infusion stands",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Lighting",
+                "url": "category-grid.html"
+            },
+            {
+                "text": "Machines",
+                "url": "category-grid.html"
+            }
+        ]
+    }
+}

@@ -1,0 +1,102 @@
+.ps-section--categories {
+    .ps-section__title {
+        color: $color-1st;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .ps-categories__list {
+        display: flex;
+        flex-flow: row wrap;
+        position: relative;
+        justify-content: center;
+    }
+
+    .ps-categories__item {
+        width: 33.3333%;
+        flex-basis: 33.3333%;
+        height: 100%;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .ps-categories__link {
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        border-radius: 100%;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        margin-bottom: 15px;
+        border: 1px solid $color-border;
+        background-color: $color-border;
+        text-align: center;
+
+        img {
+            max-width: 30px;
+        }
+
+        &:hover {
+            background-color: white;
+            border-color: $color-1st;
+        }
+    }
+
+    .ps-categories__name {
+        line-height: 26px;
+        font-size: 16px;
+        color: $color-1st;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+        display: block;
+
+        &:hover {
+            color: $color-warning;
+        }
+    }
+
+    .ps-categories__show {
+        padding: 3px 10px;
+        min-width: 90px;
+        font-size: 14px;
+        background-color: white;
+        color: $color-1st;
+        border: 1px solid $color-border;
+        border-radius: 40px;
+        font-weight: 600;
+        display: inline-block;
+
+        &:hover {
+            background-color: $color-warning;
+            color: white;
+            border-color: $color-warning;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .ps-categories__item {
+            width: 20%;
+            flex-basis: 20%;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .ps-categories__item {
+            width: 14.285%;
+            flex-basis: 14.285%;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-section__title {
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+}

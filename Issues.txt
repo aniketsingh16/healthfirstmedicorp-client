@@ -1,0 +1,196 @@
+^^  CSS Sizing
+≤480 — phones
+≤768 — phones + small tablets
+≤992 — tablets
+≤1200 — small laptops
+
+^^ ps-loaded issue.
+    useEffect(() => {
+        setTimeout(function () {
+            document.getElementById("__next").classList.add("ps-loaded");
+        }, 10);
+    });
+
+    
+    ^^ import FormSearchHeader from "@/components/shared/forms/FormSearchHeader";
+
+    ^^ npm i react-lazyload 
+    ^^ npm i react-slick
+
+^^ email validations
+
+
+^^ Navbar Fix
+
+<header class="header--desktop header--one without-border header--sticky" id="header-sticky">
+<header class="header--desktop header--one" id="header-sticky">
+
+-- OLD CSS (even after srolling)
+.header--one {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+--New Css after scrolling
+.header--desktop.header--sticky {
+    z-index: 999;
+    background-color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+DATABASE: npm install @neondatabase/serverless  --legacy-peer-deps
+Neon DB send Data in <FormContact/>
+
+EMAIL: npm i @react-email/components --legacy-peer-deps
+
+-> In Product Images Slider, replace react-slick with a better alternative. (Swiper)
+-> ProductPrice accepts MRP,SALE_PRICE(boolean), based upon this strike price will be in action.
+-> WhatsApp and Currency css is in @/public/static/style.min.css
+
+Breadcrumb Padding Issue: 
+.breadcrumb {
+    background-color: #0000;
+    border: none;
+    margin-bottom: 0;
+    padding: 15px 0;  (fixed)
+}
+
+-- Remove old code, make the Zustand path correct way
+ModuleHeaderActions
+ModuleProductActions
+
+-> Wishlist refresh issue
+
+Color Codes for price: #374a67 , #2c3d55, #104f55
+class="form-control ps-input"
+
+For wishlist item center align:
+.ps-product--on-cart.simple .ps-product__content {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#table-wishlist tbody tr td {
+    vertical-align: middle;
+    text-align: center;
+    /* width: 200px; */
+}
+
+
+
+============================================== Clerk User ==================================================
+          {/* User */}
+          <SignedIn>
+            <UserButton
+              afterSwitchSessionUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "h-9 w-9",
+                },
+              }}
+            >
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="My Orders"
+                  labelIcon={<Package className="h-4 w-4" />}
+                  href="/orders"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button variant="ghost" size="icon">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Sign in</span>
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+====================================================================================================================
+
+<SignInButton
+    mode="modal"
+    appearance={{
+        variables: {
+            fontSize: "16px",
+            spacingUnit: "16px",   // Clerk's internal spacing/sizing scale — force it to a real px value
+            borderRadius: "8px",
+        },
+        elements: {
+            modalContent: "clerk-modal-content",
+            card: "clerk-card",
+            rootBox: "clerk-root-box",
+        },
+    }}
+>
+    <button type="button" className="sign-in-button" aria-label="Sign in">
+        <i className="icon-user" aria-hidden="true"></i>
+    </button>
+</SignInButton>
+
+<UserButton
+    appearance={{
+        variables: {
+            fontSize: "16px",
+            spacingUnit: "16px",
+        },
+        elements: {
+            avatarBox: "user-avatar",
+        },
+    }}
+>
+==========================================================================================================
+
+for product price in subscript: (scss -> platform -> _product.scss)
+
+    .ps-product__price {
+        font-weight: 600;
+        line-height: 1em;
+
+        del {
+            font-weight: 400;
+            color: #9babcd;
+            font-size: 17px;
+        }
+    }
+
+  or 
+
+  .ps-product__price {
+    font-weight: 600;
+    line-height: 1em;
+
+    del {
+        font-weight: 400;
+        color: #9babcd;
+        font-size: 16px;
+        // vertical-align: super;
+        margin-left: 6px;
+    }
+}
+
+Header Scroll Issue: stickyHeader function in common-helpers
+
+-> If the user is logged-in, Firstly should be a global state (Zustand) or not. Secondly, If the user is logged-in then
+the query send by him should consist of clerk_id in the contact_submission table otherwise null.
+
+-> shop should be replaced with checkout
+
+useProduct:{thumbnailImages(product)}
+
+className="ps-order-summary__cta"
+
+font-sans {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+
+^^  <Link href={`/product/${product.id}`}>{product.name}</Link>  in ProductOnCart

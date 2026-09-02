@@ -1,0 +1,149 @@
+.ps-section--deals {
+    .ps-section__header {
+        margin-bottom: 20px;
+    }
+    .ps-section__title {
+        line-height: 50px;
+        font-size: 30px;
+        font-weight: bold;
+        color: $color-1st;
+        margin-bottom: 10px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .ps-countdown {
+        .ps-countdown__days {
+            display: none;
+        }
+    }
+
+    .ps-section__carousel {
+        border: 3px solid $color-warning;
+        border-radius: 5px;
+    }
+
+    .owl-carousel {
+
+        .owl-dots {
+            bottom: -50px;
+            display: none;
+        }
+
+        .owl-nav {
+            display: none;
+            .owl-prev {
+                margin-left: -30px;
+            }
+
+            .owl-next {
+                margin-right: -30px;
+            }
+        }
+
+        .owl-item:not(.active) + .owl-item.active {
+            .ps-section__product {
+                border-left: none;
+            }
+        }
+    }
+
+    .ps-section__product {
+        border-left: 1px solid $color-border;
+    }
+
+    @media (min-width: 768px) {
+        .ps-section__header {
+            display: flex;
+            justify-content: center;
+        }
+
+        .ps-countdown {
+            width: auto;
+            margin-left: 30px;
+        }
+
+        .ps-section__title {
+            margin-bottom: 0;
+        }
+
+        .owl-carousel {
+            &:hover {
+                .owl-nav {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .ps-section__title {
+            font-size: 40px;
+        }
+    }
+}
+
+.ps-section--weekdeal {
+    .ps-section__title {
+        font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 20px;
+        color: $color-1st;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .ps-weekdeal__product {
+        border-radius: 4px;
+        border: 3px solid $color-warning;
+    }
+
+    .ps-countdown {
+        height: 80px;
+        padding-top: 20px;
+        .ps-countdown__days {
+            display: none;
+        }
+        
+    }
+
+    @media (min-width: 768px) {
+        .ps-countdown {
+            .ps-countdown__block {
+                margin: 5px;
+
+                &:not(:last-child) {
+                    &::after {
+                        right: -10px;
+                    }
+                }
+            }
+
+            .ps-countdown__hours {
+                margin-left: 0;
+            }
+
+            .ps-countdown__seconds {
+                margin-right: 0;
+            }
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .ps-section__title {
+            font-size: 30px;
+            line-height: 40px;
+        }
+
+        .ps-countdown {
+            .ps-countdown__block {
+                margin: 8px;
+                &:not(:last-child) {
+                    &::after {
+                        right: -12px;
+                    }
+                }
+            }
+        }
+    }
+}

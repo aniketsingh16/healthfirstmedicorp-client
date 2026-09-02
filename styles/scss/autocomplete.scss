@@ -1,0 +1,287 @@
+// ==========================================================================
+// Autocomplete Dropdown — Global SCSS
+// Import in layout.js alongside your other global styles, e.g.:
+//   import "@/styles/scss/autocomplete.scss";
+// ==========================================================================
+
+$color-border-default: #d7dce3;
+$color-border-focus:   #3b82f6;
+$color-text-primary:   #1f2937;
+$color-text-muted:     #9aa3af;
+$color-icon:           #2f7dfa;
+$color-primary:        #2f7dfa;
+$color-primary-hover:  #1e6ce8;
+$color-highlight:      #fff176;
+$color-hover-bg:       #eaf2ff;
+
+$color-rx-text: #e0507a;
+$color-rx-bg:   #fdeef2;
+
+$color-otc-text:   #2fa87e;
+$color-otc-bg:     #e8f8f1;
+$color-otc-border: #b9e8d3;
+
+$color-in-stock:     #2fa87e;
+$color-out-of-stock: #d1495b;
+
+$color-scrollbar-thumb: #c7cdd6;
+$color-divider:         #eef0f3;
+$color-kbd-bg:          #f3f4f6;
+$color-kbd-border:      #e2e5e9;
+
+$radius-pill:   999px;
+$radius-panel:  16px;
+$radius-item:   10px;
+$radius-kbd:    5px;
+
+$shadow-search-bar: 0 4px 14px rgba(0, 0, 0, 0.06);
+$shadow-dropdown:   0 10px 30px rgba(0, 0, 0, 0.12);
+
+// Namespaced with .hfm- (Healthfirst Medicorp) since this is a global
+// stylesheet, not a CSS Module — avoids clashing with antd / bootstrap /
+// theme classes already loaded in layout.js.
+
+.hfm-autocomplete {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+
+  // -- Search bar --------------------------------------------------------
+  .hfm-autocomplete__search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 2px solid $color-border-default;
+    border-radius: $radius-pill;
+    padding: 10px 12px 10px 20px;
+    box-shadow: $shadow-search-bar;
+    transition: border-color 0.15s ease;
+
+    &.hfm-autocomplete__search-bar--focused {
+      border-color: $color-border-focus;
+    }
+  }
+
+  .hfm-autocomplete__search-icon {
+    color: $color-text-muted;
+    flex-shrink: 0;
+    display: flex;
+  }
+
+  .hfm-autocomplete__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: $color-text-primary;
+    background: transparent;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+  }
+
+  .hfm-autocomplete__clear-btn {
+    border: none;
+    background: transparent;
+    color: $color-text-muted;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    line-height: 0;
+    visibility: hidden;
+
+    &.hfm-autocomplete__clear-btn--visible {
+      visibility: visible;
+    }
+  }
+
+  .hfm-autocomplete__submit-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $color-primary;
+    color: #fff;
+    border: none;
+    border-radius: $radius-pill;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: $color-primary-hover;
+    }
+  }
+
+  // -- Dropdown panel ------------------------------------------------------
+  .hfm-autocomplete__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: $radius-panel;
+    box-shadow: $shadow-dropdown;
+    overflow: hidden;
+    display: none;
+
+    &.hfm-autocomplete__dropdown--open {
+      display: block;
+    }
+  }
+
+  .hfm-autocomplete__dropdown-header {
+    padding: 14px 20px 8px;
+    font-size: 13px;
+    color: $color-text-muted;
+    letter-spacing: 0.3px;
+  }
+
+  .hfm-autocomplete__list {
+    max-height: 340px;
+    overflow-y: auto;
+    padding: 0 4px;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $color-scrollbar-thumb;
+      border-radius: 10px;
+    }
+  }
+
+  // -- Result item -----------------------------------------------------
+  .hfm-autocomplete__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: $radius-item;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover,
+    &.hfm-autocomplete__item--active {
+      background: $color-hover-bg;
+    }
+  }
+
+  .hfm-autocomplete__item-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-icon;
+  }
+
+  .hfm-autocomplete__item-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hfm-autocomplete__item-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hfm-autocomplete__item-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: $color-text-primary;
+
+    mark {
+      background: $color-highlight;
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+  }
+
+  .hfm-autocomplete__item-subtitle {
+    font-size: 13px;
+    color: $color-text-muted;
+    margin-top: 2px;
+
+    mark {
+      background: $color-highlight;
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+  }
+
+  .hfm-autocomplete__badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: $radius-pill;
+    line-height: 1.5;
+
+    &.hfm-autocomplete__badge--rx {
+      color: $color-rx-text;
+      background: $color-rx-bg;
+    }
+
+    &.hfm-autocomplete__badge--otc {
+      color: $color-otc-text;
+      background: $color-otc-bg;
+      border: 1px solid $color-otc-border;
+    }
+  }
+
+  .hfm-autocomplete__stock {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+
+    &.hfm-autocomplete__stock--in {
+      color: $color-in-stock;
+    }
+
+    &.hfm-autocomplete__stock--out {
+      color: $color-out-of-stock;
+    }
+  }
+
+  // -- Footer ------------------------------------------------------------
+  .hfm-autocomplete__footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 16px;
+    border-top: 1px solid $color-divider;
+    font-size: 12px;
+    color: $color-text-muted;
+
+    kbd {
+      background: $color-kbd-bg;
+      border: 1px solid $color-kbd-border;
+      border-radius: $radius-kbd;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-family: inherit;
+      margin: 0 3px;
+    }
+  }
+
+  // -- No results state ----------------------------------------------------
+  .hfm-autocomplete__no-results {
+    padding: 30px 20px;
+    text-align: center;
+    color: $color-text-muted;
+    font-size: 14px;
+  }
+}
