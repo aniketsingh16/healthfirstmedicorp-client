@@ -55,10 +55,10 @@ export async function POST(request) {
       null;
 
     try {
-      // CHANGED — check existence first instead of relying on ON CONFLICT,
-      // so the customers.id sequence is only advanced on a genuine new row
+      // Check existence first instead of relying on ON CONFLICT, so the
+      // customers.id sequence is only advanced on a genuine new row.
       const [existing] = await sql`
-        SELECT customer_id FROM customers WHERE clerk_id = ${id}
+        SELECT customer_id, email FROM customers WHERE clerk_id = ${id}
       `;
 
       if (existing) {
@@ -76,23 +76,27 @@ export async function POST(request) {
           VALUES (${id}, ${first_name}, ${last_name}, ${primaryEmail})
         `;
         console.log("✅ User inserted successfully");
+      }
 
-        // Only genuinely new customers reach this branch, so the welcome mail
-        // goes out exactly once — returning users take the UPDATE path above.
-        //
-        // A mail failure must NOT fail the webhook. If we returned 500 here,
-        // svix would retry, the row would already exist, we'd take the UPDATE
-        // path, and the welcome mail would be skipped forever.
-        if (primaryEmail) {
-          try {
-            await sendWelcomeEmail({
-              to: primaryEmail,
-              firstName: first_name,
-            });
-            console.log("✅ Welcome email sent");
-          } catch (mailError) {
-            console.error('Welcome email failed:', mailError);
-          }
+      // Welcome on a new Clerk account, not on a new customers row. Checkout
+      // can insert the customer before this webhook runs; that used to skip
+      // the mail. user.updated is ignored unless this was an email-less
+      // account that just gained an address (nothing to send until then).
+      const isNewClerkUser = event.type === 'user.created';
+      const gainedEmail = Boolean(existing && !existing.email && primaryEmail);
+      const shouldSendWelcome = Boolean(primaryEmail) && (isNewClerkUser || gainedEmail);
+
+      if (shouldSendWelcome) {
+        try {
+          await sendWelcomeEmail({
+            to: primaryEmail,
+            firstName: first_name,
+          });
+          console.log("✅ Welcome email sent");
+        } catch (mailError) {
+          // Do not fail the webhook. A 500 would make Svix retry, but the
+          // customer row already exists either way.
+          console.error('Welcome email failed:', mailError);
         }
       }
     } catch (dbError) {

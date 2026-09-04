@@ -8,7 +8,7 @@ const LOGO_URL ="https://cdn.sanity.io/images/27p517bf/production/fcd2009306b35b
 // Must be a domain verified in Resend.
 const FROM =
     process.env.RESEND_FROM ||
-    "Healthfirst Medicorp <onboarding@healthfirstmedicorp.shop>";
+    "Healthfirst Medicorp <onboarding@healthfirstmedicorp.com>";
 
 export async function sendWelcomeEmail({ to, firstName }) {
     if (!to) throw new Error("sendWelcomeEmail: no recipient");

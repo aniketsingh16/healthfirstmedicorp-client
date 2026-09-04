@@ -27,9 +27,9 @@ export const WelcomeEmail = ({ firstName, logoSrc }) => (
                     exceptional service.
                 </Text>
                 <Section style={btnContainer}>
-                    <Button style={button} href={SITE_URL}>
-                        Start shopping
-                    </Button>
+                    <Text style={paragraph}>
+                        <a href={SITE_URL} style={link}>Click here to get started →</a>
+                    </Text>
                 </Section>
                 <Text style={paragraph}>
                     Warm regards,
