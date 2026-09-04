@@ -5,13 +5,12 @@ const ModuleHeaderNotice = ({ classes }) => {
         <div className={`ps-noti header__notice ${classes}`}>
             <div className="container">
                 <p className="m-0">
-                    Due to the <strong>COVID 19 </strong>epidemic, orders may be
-                    processed with a slight delay
+                    [ IMPORTANT NOTICE! ] We're improving your experience, some features may not behave perfectly yet.
                 </p>
             </div>
-            <a className="ps-noti__close">
+            {/* <a className="ps-noti__close">
                 <i className="icon-cross"></i>
-            </a>
+            </a> */}
         </div>
     );
 };

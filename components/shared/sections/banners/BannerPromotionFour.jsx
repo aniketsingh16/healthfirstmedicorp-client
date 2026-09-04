@@ -18,10 +18,10 @@ const BannerPromotionFour = () => {
                             </h2>
                             <div className="ps-banner__btn-group">
                                 <div className="ps-banner__btn">
-                                    <img
+                                    {/* <img
                                         src="/static/img/icon/bacterial.svg"
                                         alt="alt"
-                                    />
+                                    /> */}
                                     Anti-Bacterial
                                 </div>
                                 <div className="ps-banner__btn">

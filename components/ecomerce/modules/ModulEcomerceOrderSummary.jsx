@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import { calculateAmount } from "@/utilities/ecomerce-helpers";
 import useEcomerce from "@/hooks/useEcomerce";
 import Link from "next/link";
@@ -118,4 +117,4 @@ const ModulEcomerceOrderSummary = ({ ecommerce }) => {
     );
 };
 
-export default connect((state) => state)(ModulEcomerceOrderSummary);
+export default ModulEcomerceOrderSummary;

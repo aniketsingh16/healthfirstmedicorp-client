@@ -46,6 +46,7 @@ import ModuleHeaderActions from "@/components/shared/headers/modules/ModuleHeade
 import NavigationPrimary from "@/components/shared/navigations/NavigationPrimary";
 import Logo from "@/components/elements/basic/Logo";
 import SearchAutocomplete from "../SearchAutocomplete";
+import ModuleHeaderNotice from "@/components/Header/ModuleHeaderNotice";
 
 const HeaderDefault = ({ classes = "", products }) => {
     const [isSticky, setIsSticky] = useState(false);
@@ -63,7 +64,8 @@ const HeaderDefault = ({ classes = "", products }) => {
         <header
             className={`header--desktop header--one`}
             id="header-sticky"
-        >
+        >   
+        <ModuleHeaderNotice />
             <div className="header__top">
                 <div className="container">
                     <div className="header__left">

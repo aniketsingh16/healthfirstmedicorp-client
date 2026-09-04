@@ -42,8 +42,8 @@ const HomeOneTopBanners = () => {
                                         Only in this week. Don’t misss!
                                     </div>
                                     <div className="ps-banner__price">
-                                        <span>$15.99</span>
-                                        <del>$29.99</del>
+                                        {/* <span>$15.99</span>
+                                        <del>$29.99</del> */}
                                     </div>
                                     <a
                                         className="bg-warning ps-banner__shop"
@@ -55,16 +55,16 @@ const HomeOneTopBanners = () => {
                                     </div>
                                 </div>
                                 <div className="ps-banner__thumnail">
-                                    <img
+                                    {/* <img
                                         className="ps-banner__round"
                                         src="/static/img/round2.png"
                                         alt="alt"
-                                    />
-                                    <img
+                                    /> */}
+                                    {/* <img
                                         className="ps-banner__image"
                                         src="/static/img/promotion/slide1.png"
                                         alt="alt"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>
@@ -87,17 +87,17 @@ const HomeOneTopBanners = () => {
                                     </div>
                                     <div className="ps-banner__btn-group">
                                         <div className="ps-banner__btn">
-                                            <img
+                                            {/* <img
                                                 src="/static/img/icon/bacterial.svg"
                                                 alt="alt"
-                                            />
+                                            /> */}
                                             Anti-Bacterial
                                         </div>
                                         <div className="ps-banner__btn">
-                                            <img
+                                            {/* <img
                                                 src="/static/img/icon/virus.svg"
                                                 alt="alt"
-                                            />
+                                            /> */}
                                             Anti-Virus
                                         </div>
                                     </div>
@@ -107,11 +107,11 @@ const HomeOneTopBanners = () => {
                                         Shop now
                                     </a>
                                     <div className="ps-banner__persen bg-yellow ps-top">
-                                        <small>only</small>$25
+                                        {/* <small>only</small>$25 */}
                                     </div>
                                 </div>
                                 <div className="ps-banner__thumnail">
-                                    <img
+                                    {/* <img
                                         className="ps-banner__round"
                                         src="/static/img/round5.png"
                                         alt="alt"
@@ -120,7 +120,7 @@ const HomeOneTopBanners = () => {
                                         className="ps-banner__image"
                                         src="/static/img/promotion/slide3.png"
                                         alt="alt"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>
@@ -161,12 +161,12 @@ const HomeOneTopBanners = () => {
                                         href="#">
                                         Shop now
                                     </a>
-                                    <div className="ps-banner__persen bg-primary">
+                                    {/* <div className="ps-banner__persen bg-primary">
                                         -25%
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="ps-banner__thumnail">
-                                    <img
+                                    {/* <img
                                         className="ps-banner__round"
                                         src="/static/img/round2.png"
                                         alt="alt"
@@ -175,7 +175,7 @@ const HomeOneTopBanners = () => {
                                         className="ps-banner__image"
                                         src="/static/img/promotion/slide4.png"
                                         alt="alt"
-                                    />
+                                    /> */}
                                 </div>
                             </div>
                         </div>

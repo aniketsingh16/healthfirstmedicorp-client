@@ -6,11 +6,11 @@ const ModuleHeaderPromotions = () => {
         <>
             <div className="ps-promo">
                 <div className="ps-promo__item">
-                    <img
+                    {/* <img
                         className="ps-promo__banner"
                         src="/static/img/promotion/bg-banner4.jpg"
                         alt="alt"
-                    />
+                    /> */}
                     <div className="ps-promo__content">
                         <span className="ps-promo__badge">New</span>
                         <h4 className="mb-20 ps-promo__name">
@@ -25,11 +25,11 @@ const ModuleHeaderPromotions = () => {
             </div>
             <div className="ps-promo">
                 <div className="ps-promo__item">
-                    <img
+                    {/* <img
                         className="ps-promo__banner"
                         src="/static/img/promotion/bg-banner5.jpg"
                         alt="alt"
-                    />
+                    /> */}
                     <div className="ps-promo__content">
                         <h4 className="ps-promo__name">
                             Candid <br />
