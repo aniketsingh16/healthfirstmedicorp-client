@@ -78,13 +78,17 @@ export async function POST(request) {
         console.log("✅ User inserted successfully");
       }
 
-      // Welcome on a new Clerk account, not on a new customers row. Checkout
-      // can insert the customer before this webhook runs; that used to skip
-      // the mail. user.updated is ignored unless this was an email-less
-      // account that just gained an address (nothing to send until then).
+      // Welcome on a genuinely new customer, under either definition of "new":
+      // a brand-new Clerk account (user.created), or a clerk_id we have never
+      // seen before. The second case matters because user.updated can be the
+      // first event we actually receive, depending on which events the Clerk
+      // instance is subscribed to. gainedEmail covers an email-less account
+      // that just picked up an address - nothing to send before that.
       const isNewClerkUser = event.type === 'user.created';
+      const isNewRow = !existing;
       const gainedEmail = Boolean(existing && !existing.email && primaryEmail);
-      const shouldSendWelcome = Boolean(primaryEmail) && (isNewClerkUser || gainedEmail);
+      const shouldSendWelcome =
+        Boolean(primaryEmail) && (isNewClerkUser || isNewRow || gainedEmail);
 
       if (shouldSendWelcome) {
         try {
@@ -98,6 +102,10 @@ export async function POST(request) {
           // customer row already exists either way.
           console.error('Welcome email failed:', mailError);
         }
+      } else {
+        console.log(
+          `↩️ Welcome skipped - event=${event.type}, hasEmail=${Boolean(primaryEmail)}, newRow=${isNewRow}`
+        );
       }
     } catch (dbError) {
       console.error('DB upsert failed:', dbError);
