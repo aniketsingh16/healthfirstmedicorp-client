@@ -28,7 +28,7 @@ export const WelcomeEmail = ({ firstName, logoSrc }) => (
                 </Text>
                 <Section style={btnContainer}>
                     <Text style={paragraph}>
-                        <a href={SITE_URL} style={link}>Click here to get started →</a>
+                        <a href={SITE_URL} style={link}> Click here to get started → </a>
                     </Text>
                 </Section>
                 <Text style={paragraph}>
@@ -65,6 +65,16 @@ const button = {
     textAlign: "center",
     display: "block",
     padding: "12px",
+};
+const link = {
+    backgroundColor: "#103178",
+    borderRadius: "4px",
+    color: "#ffffff",
+    fontSize: "16px",
+    fontWeight: 600,
+    textDecoration: "none",
+    display: "inline-block",
+    padding: "12px 24px",
 };
 const hr = { borderColor: "#cccccc", margin: "20px 0" };
 const footer = { color: "#8898aa", fontSize: "12px" };
