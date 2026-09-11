@@ -6,6 +6,9 @@
 
     .ps-layout__item {
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
         border-right: 1px solid #f0f2f5;
         border-bottom: 1px solid #f0f2f5;
     }

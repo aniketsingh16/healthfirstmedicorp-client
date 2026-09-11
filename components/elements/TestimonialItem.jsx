@@ -37,6 +37,13 @@ const TestimonialItem = ({ source }) => {
                 &rdquo;
             </span> */}
             <i className="fa fa-quote-left testimonial-card__quote" aria-hidden="true" />
+            <img
+                className="testimonial-card__source"
+                src="https://cdn.sanity.io/images/27p517bf/production/ff15805dfb19839193c7846d3828153e6ec7bf50-1280x1308.webp"
+                alt="Google review"
+                width={20}
+                height={20}
+            />
 
             <p className="testimonial-card__text">{source.text}</p>
 

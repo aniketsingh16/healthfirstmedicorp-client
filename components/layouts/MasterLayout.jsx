@@ -14,6 +14,11 @@ import RequestCallback from "@/components/shared/modals/RequestCallback";
 import ChatModal from "@/components/shared/chat/ChatModal";
 import Link from "next/link";
 
+
+const phone = "917387086440";
+const message = "Hi, I want to know more!";
+const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
 const MasterLayout = ({ children }) => {
     const toggleDrawer = useAppStore((state) => state.toggleDrawer);
     const setCartItems = useEcommerceStore((state) => state.setCartItems);
@@ -52,15 +57,15 @@ const MasterLayout = ({ children }) => {
             <ModuleCustomHead />
             <div className="ps-page">
                 <div>
-                    <Link
-                        href="https://wa.me/7387086440?text=Hi"
+                    <a
+                        href={href}
                         className="whatsapp-button"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <i className="fa fa-whatsapp"></i>
                         Order on WhatsApp
-                    </Link>
+                    </a>
                 </div>
                 {children}
                 <NavigationBottom />

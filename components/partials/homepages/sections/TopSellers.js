@@ -91,7 +91,8 @@ const TopSellers =  ({ categoriesProducts }) => {
     // console.log("selected-category", productsNew)
 
     function categoriesData(selectedCategory) {
-        const filteredProducts = categoriesProducts.filter(product => product.category.name === selectedCategory);
+        const filteredProducts = (categoriesProducts ?? []).filter((product) => product?.category?.name === selectedCategory);
+
         console.log(filteredProducts)
         setProductsNew(filteredProducts);
     }
@@ -125,7 +126,7 @@ const TopSellers =  ({ categoriesProducts }) => {
         <div className="ps-section--standard ps-best-sellers">
             <div className="container">
                 <div className="ps-section__header">
-                    <h3>Top 5 Bestsellers in:</h3>
+                    <h3>Top Bestsellers in:</h3>
                     <ul className="ps-list--categories">{categoriesView}</ul>
                 </div>
                 <div className="ps-section__content">{products}</div>

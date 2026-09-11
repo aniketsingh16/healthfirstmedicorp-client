@@ -214,4 +214,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8VPCJVZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->s
+<!-- End Google Tag Manager (noscript) -->
+
+
+Google Search Console — submit your sitemap, monitor indexing/crawl errors, see which queries bring traffic, 
+request re-indexing for updated pages. This is non-negotiable for any site, and it's free.

@@ -1,0 +1,8 @@
+# Algolia-Crawler-Verif: 28B12C58CDA4DB7A
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+
+Sitemap: https://www.healthfirstmedicorp.com/sitemap.xml

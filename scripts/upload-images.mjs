@@ -11,8 +11,10 @@ const client = createClient({
 
 const asset = await client.assets.upload(
     "image",
-    fs.createReadStream("public/static/img/hfmc.png"),
-    { filename: "hfmc-logo.png" }
+    fs.createReadStream("public/static/img/icon/Google_favicon.webp"),
+    { filename: "Google_favicon.webp" }
 );
 
 console.log("\nAsset URL:\n" + asset.url + "\n");
+
+// node --env-file=.env.local scripts/upload-images.mjs

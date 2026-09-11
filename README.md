@@ -21,3 +21,4 @@ https://claude.ai/share/b1f83c10-6369-43d5-8e73-ea60b46492a3 : Zustand Setup
 
 nGrok Local Server: cmd: ngrok http 3000
 
+ASSET UPLOAD (root dir) -> node --env-file=.env.local scripts/upload-images.mjs 

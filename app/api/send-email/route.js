@@ -12,7 +12,7 @@ export async function POST(req) {
         const emailContent = await render(<KoalaWelcomeEmail userFirstname={name} />); // render() returns a Promise — needs awaiting, or html gets sent as "[object Promise]"
 
         const { data, error } = await resend.emails.send({
-            from: 'Healthfirst Medicorp <onboarding@healthfirstmedicorp.shop>',
+            from: 'Healthfirst Medicorp <onboarding@healthfirstmedicorp.com>',
             to: email,
             subject: "Welcome to Healthfirst Medicorp",
             html: emailContent
