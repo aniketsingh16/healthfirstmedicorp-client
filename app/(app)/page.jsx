@@ -14,6 +14,20 @@ import BestDealOfWeek from "@/components/partials/homepages/sections/BestDealOfW
 import Testimonials from "@/components/shared/sections/Testimonials";
 import BrandStrip from "@/components/shared/sections/BrandStrip";
 
+const OG_IMAGE =
+  'https://cdn.sanity.io/images/27p517bf/production/fcd2009306b35b4eba8fa9d6cc3daf2a7e20a022-700x250.png?w=1200&h=630&fit=fill&bg=ffffff';
+
+export const metadata = {
+  alternates: { canonical: '/' },
+  openGraph: {
+    url: '/',
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Healthfirst Medicorp' }],
+  },
+  twitter: {
+    images: [OG_IMAGE],
+  },
+};
+
 export default async function Home() {
 
   const { data: products } = await sanityFetch({

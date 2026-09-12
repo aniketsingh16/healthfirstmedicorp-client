@@ -20,6 +20,8 @@ const breadcrumb = [
     },
 ];
 
+export const metadata = { alternates: { canonical: '/contact-us' } };
+
 const ContactUsScreen = () => {
     return (
         <Container title="Contact Us">

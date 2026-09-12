@@ -1,0 +1,443 @@
+/* ===========================================================================
+   Request a Callback popup, version two
+   ---------------------------------------------------------------------------
+   The JSX reuses the original modal's class names, and both stylesheets are
+   plain global imports, so unscoped rules here would fight request-callback.scss
+   and load order would decide the winner.
+
+   Everything below is therefore scoped under .rcb__overlay--two. That also makes
+   every selector two classes deep, which beats the original's single-class rules
+   on specificity, so the outcome no longer depends on import order.
+
+   Requires one change in the JSX: add rcb__overlay--two alongside rcb__overlay
+   on the outermost div.
+   =========================================================================== */
+
+$rcb2-panel-dark: #0a2630;
+$rcb2-panel-mid: #103a45;
+$rcb2-panel-light: #17525f;
+$rcb2-teal: #0f8a7c;
+$rcb2-teal-deep: #0b6f64;
+$rcb2-mint: #4ade80;
+$rcb2-ink: #0f2830;
+$rcb2-muted: #64808a;
+$rcb2-border: #d7e4e9;
+
+.rcb__overlay--two {
+    // Two classes, so this wins over .rcb__overlay whichever file loads last.
+    &.rcb__overlay {
+        position: fixed;
+        inset: 0;
+        overflow-y: auto;
+        z-index: 1200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background-color: rgba(9, 25, 31, 0.58);
+        backdrop-filter: blur(3px);
+        animation: rcb2-fade 0.2s ease;
+    }
+
+    .rcb {
+        position: relative;
+        width: 100%;
+        max-width: 860px;
+        padding: 22px;
+        background-color: #fff;
+        border-radius: 24px;
+        box-shadow: 0 28px 70px rgba(6, 22, 28, 0.38);
+        animation: rcb2-rise 0.25s ease;
+
+        // The original centres its text. This layout is left-aligned throughout,
+        // and the inherited value would otherwise reach every child.
+        text-align: left;
+
+        // Every element in the JSX is a direct child of .rcb, so the two panels
+        // are built by placing those children into columns rather than by
+        // wrapping them in new markup.
+        display: grid;
+        grid-template-columns: 330px minmax(0, 1fr);
+        grid-template-areas:
+            "title    form"
+            "subtitle form"
+            "contacts form"
+            "contacts legal";
+        column-gap: 36px;
+
+        // The dark panel. A pseudo-element because there is no wrapper to paint,
+        // and one gradient has to run behind three separate children.
+        &::before {
+            content: "";
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            bottom: 22px;
+            width: 330px;
+            border-radius: 16px;
+            background-image: linear-gradient(
+                145deg,
+                $rcb2-panel-dark 0%,
+                $rcb2-panel-mid 55%,
+                $rcb2-panel-light 100%
+            );
+        }
+    }
+
+    // ------------------------------------------------------------- dark panel
+
+    .rcb__title,
+    .rcb__subtitle,
+    .rcb__contacts {
+        // Lift above ::before, which is painted on the parent.
+        position: relative;
+        z-index: 1;
+    }
+
+    .rcb__title {
+        grid-area: title;
+        margin: 0;
+        padding: 36px 30px 0;
+        color: #fff;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+    }
+
+    .rcb__subtitle {
+        grid-area: subtitle;
+        margin: 16px 0 0;
+        padding: 0 30px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.6;
+    }
+
+    .rcb__contacts {
+        grid-area: contacts;
+        align-self: end;
+        display: block;
+        margin: 28px 0 0;
+        padding: 0 30px 36px;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+
+            &:not(:last-child) {
+                margin-bottom: 14px;
+            }
+        }
+
+        a {
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 14.5px;
+            font-weight: 500;
+            text-decoration: none;
+
+            &:hover {
+                color: #fff;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .rcb__icon {
+        flex: 0 0 26px;
+        width: 26px;
+        height: 26px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(74, 222, 128, 0.14);
+        color: $rcb2-mint;
+        font-size: 12px;
+    }
+
+    // ------------------------------------------------------------ white side
+
+    .rcb__form {
+        grid-area: form;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding-top: 36px;
+    }
+
+        .rcb__input {
+        width: 100%;
+        height: 50px;
+        padding: 0 16px;
+        border: 1px solid $rcb2-border;
+        border-radius: 10px;
+        background-color: #fff;
+        color: $rcb2-ink;
+        font-size: 15px;
+        // Typed text sits heavier than the placeholder below, which is what
+        // makes a filled field read as filled at a glance.
+        font-weight: 500;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+        &::placeholder {
+            color: #9db2ba;
+            font-weight: 400;
+        }
+
+        // &:focus {
+        //     outline: none;
+        //     // Brighter teal than the buttons use, so the active field stands out
+        //     // against them rather than blending in.
+        //     border-color: #14b8a6;
+        //     // Two shadows: the 1px doubles the border to look 2px thick without
+        //     // changing the box size, the 5px is the soft glow.
+        //     box-shadow:
+        //         0 0 0 1px #14b8a6,
+        //         0 0 0 5px rgba(20, 184, 166, 0.16);
+        // }
+        &:focus {
+            outline: none;
+            border-color: #2dd4bf;
+            // Single shadow, so the border stays at its real 1px. The earlier
+            // 0 0 0 1px ring was what made it look 2px thick.
+            box-shadow: 0 0 0 5px rgba(45, 212, 191, 0.16);
+        }
+
+    }
+
+
+    .rcb__submit {
+        width: 100%;
+        height: 54px;
+        margin-top: 6px;
+        border: none;
+        border-radius: 27px;
+        background-color: $rcb2-teal;
+        color: #fff;
+        font-size: 15.5px;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover:not(:disabled) {
+            background-color: $rcb2-teal-deep;
+            box-shadow: 0 6px 18px rgba(15, 138, 124, 0.3);
+        }
+
+        &:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $rcb2-ink;
+            outline-offset: 2px;
+        }
+    }
+
+    .rcb__status {
+        margin: 0;
+        font-size: 13.5px;
+
+        &--error {
+            color: #c2410c;
+        }
+
+        &--done {
+            color: $rcb2-teal-deep;
+        }
+    }
+
+    .rcb__legal {
+        grid-area: legal;
+        margin: 16px 0 0;
+        padding-bottom: 14px;
+        color: $rcb2-muted;
+        font-size: 12.5px;
+        line-height: 1.7;
+
+        a {
+            color: $rcb2-teal-deep;
+            text-decoration: underline;
+        }
+    }
+
+    // The divider separated the form from the contact links. Those now sit in
+    // the dark panel, so it has nothing left to divide.
+    .rcb__or {
+        display: none;
+    }
+
+    .rcb__close {
+        position: absolute;
+        top: 8px;
+        right: 18px;
+        z-index: 2;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background-color: $rcb2-ink;
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background-color 0.15s ease, transform 0.15s ease;
+
+        &:hover {
+            background-color: #1b4250;
+            border-color: transparent;
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        &:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+    }
+
+    // -------------------------------------------------------- category combo
+
+    .rcb__combo {
+        position: relative;
+
+        // Caret drawn on the wrapper so the input cannot cover it.
+        &::after {
+            content: "";
+            position: absolute;
+            top: 21px;
+            right: 17px;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #9db2ba;
+            border-bottom: 2px solid #9db2ba;
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+    }
+
+    .rcb__combo-input {
+        padding-right: 40px;
+    }
+
+    .rcb__combo-list {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        z-index: 3;
+        max-height: 216px;
+        overflow-y: auto;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid $rcb2-border;
+        border-radius: 10px;
+        box-shadow: 0 14px 34px rgba(6, 22, 28, 0.16);
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 7px;
+            background: none;
+            color: $rcb2-ink;
+            font-size: 14.5px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+
+            &:hover,
+            &[aria-selected="true"] {
+                background-color: rgba(15, 138, 124, 0.1);
+                color: $rcb2-teal-deep;
+            }
+        }
+    }
+
+    .rcb__combo-empty {
+        padding: 10px 12px;
+        color: $rcb2-muted;
+        font-size: 13.5px;
+    }
+
+    // ----------------------------------------------------------------- narrow
+
+    @media (max-width: 860px) {
+        .rcb {
+            max-width: 460px;
+            padding: 16px;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas:
+                "title"
+                "subtitle"
+                "form"
+                "legal"
+                "contacts";
+            column-gap: 0;
+
+            // A gradient cannot run continuously across two separate children,
+            // so the stacked panel uses one flat colour split between them.
+            &::before {
+                display: none;
+            }
+        }
+
+        .rcb__title {
+            padding: 26px 22px 0;
+            background-color: $rcb2-panel-mid;
+            border-radius: 14px 14px 0 0;
+            font-size: 23px;
+        }
+
+        .rcb__subtitle {
+            margin-top: 12px;
+            padding: 0 22px 26px;
+            background-color: $rcb2-panel-mid;
+            border-radius: 0 0 14px 14px;
+        }
+
+        .rcb__form {
+            padding-top: 22px;
+        }
+
+        // Out of the dark panel at this width, so the colours invert.
+        .rcb__contacts {
+            margin-top: 18px;
+            padding: 18px 0 6px;
+            border-top: 1px solid $rcb2-border;
+
+            a {
+                color: $rcb2-ink;
+            }
+        }
+
+        .rcb__icon {
+            background-color: rgba(15, 138, 124, 0.12);
+            color: $rcb2-teal-deep;
+        }
+    }
+}
+
+/* Own keyframes rather than reusing the original file's, so this stylesheet
+   still works if request-callback.scss is ever deleted. */
+@keyframes rcb2-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes rcb2-rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

@@ -4,6 +4,7 @@ import ModuleHeaderSupplies from "@/components/shared/headers/modules/ModuleHead
 import Menu from "@/components/elements/menu/Menu";
 import menu from "@/data/menu";
 import AskAiButton from "@/components/shared/chat/AskAiButton";
+import RequestCallbackButton from "@/components/shared/headers/modules/RequestCallbackButton";
 
 const NavigationPrimary = () => {
     return (
@@ -24,6 +25,8 @@ const NavigationPrimary = () => {
                         <strong>+91 73870 86440</strong>
                     </p>
                     <AskAiButton />
+                    <RequestCallbackButton />
+
                 </div>
             </div>
         </nav>

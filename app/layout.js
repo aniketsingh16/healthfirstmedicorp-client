@@ -8,17 +8,26 @@ const jost = Jost({
 
 
 export const metadata = {
+  metadataBase: new URL('https://www.healthfirstmedicorp.com'),
   title: {
-    default: 'HealthFirst Medicorp | CPR Manikins, AEDs & Medical Training Equipment in Pune, Maharashtra',
-    template: '%s | HealthFirst Medicorp',
+    default: 'Healthfirst Medicorp | Buy CPR Manikins & AEDs in Pune, Maharashtra',
+    template: '%s | Healthfirst Medicorp',
   },
   description: 'Buy CPR manikins, AEDs, and medical training equipment online in India.',
+  openGraph: {
+    type: 'website',
+    siteName: 'Healthfirst Medicorp',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
-  name: 'HealthFirst Medicorp',
+  name: 'Healthfirst Medicorp',
   image: 'https://www.healthfirstmedicorp.com/icon.png',
   '@id': 'https://www.healthfirstmedicorp.com',
   url: 'https://www.healthfirstmedicorp.com',
@@ -39,6 +48,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        <script src="https://cdn.jsdelivr.net/npm/@algolia/experiences/dist/experiences.js?appId=3R1T248WSI&apiKey=9e64a8840e36ec442d98b4d5666568a0&experienceId=3R1T248WSI&env=prod"></script>
         {children}
       </body>
     </html>

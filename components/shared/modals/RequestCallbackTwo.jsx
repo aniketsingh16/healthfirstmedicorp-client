@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import "./request-callback.scss";
+import "./request-callback-two.scss";
 import { OPEN_CALLBACK_MODAL } from "@/components/shared/headers/modules/RequestCallbackButton";
 
 /**
@@ -125,7 +125,7 @@ export default function RequestCallbackTwo() {
       setValues({ phone: "", name: "", email: "" });
       setCategory("");
       setCatQuery("");
-      setStatus({ state: "done", message: "Thanks — we'll call you back shortly." });
+      setStatus({ state: "done", message: "Thanks! Our team we'll call you back shortly." });
 
       setTimeout(() => {
         close();

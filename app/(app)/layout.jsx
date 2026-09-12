@@ -21,6 +21,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Providers from "./providers";
 import StoreHydration from "@/store/Zustand/StoreHydration";
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { Toaster } from "sonner";
 
 function AppLayout({ children }) {
@@ -35,6 +37,7 @@ function AppLayout({ children }) {
       <StoreHydration />
       <Providers>{children}</Providers>
       <Analytics />
+      <SpeedInsights />
       <SanityLive />
       <Toaster richColors/>
       {enableGA && <GoogleAnalytics gaId={gaId} />}

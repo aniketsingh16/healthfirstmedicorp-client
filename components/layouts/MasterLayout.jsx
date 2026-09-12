@@ -10,7 +10,7 @@ import { useCookies } from "react-cookie";
 import NavigationBottom from "@/components/shared/navigations/NavigationBottom";
 import { useEcommerceStore } from "@/store/Zustand/useEcommerceStore";
 import ModuleCustomHead from "@/components/layouts/modules/ModuleCustomHead";
-import RequestCallback from "@/components/shared/modals/RequestCallback";
+import RequestCallbackTwo from "@/components/shared/modals/RequestCallbackTwo";
 import ChatModal from "@/components/shared/chat/ChatModal";
 import Link from "next/link";
 
@@ -71,7 +71,7 @@ const MasterLayout = ({ children }) => {
                 <NavigationBottom />
                 <ModuleDrawerOverlay />
                 <DrawerPrimary />
-                <RequestCallback />
+                <RequestCallbackTwo />
                 <ChatModal />
                 <div id="loader-wrapper">
                     <div className="loader-section section-left"></div>

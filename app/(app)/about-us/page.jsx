@@ -23,6 +23,7 @@ const breadcrumb = [
         text: "About us",
     },
 ];
+export const metadata = { alternates: { canonical: '/about-us' } };
 
 const AboutUsScreen = () => {
     return (

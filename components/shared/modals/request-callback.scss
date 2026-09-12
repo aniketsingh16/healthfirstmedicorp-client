@@ -26,8 +26,16 @@ $rcb-border:  #dfe6f0;
 .rcb {
     position: relative;
     width: 100%;
-    max-width: 520px;
-    padding: 40px 44px 34px;
+    max-width: 480px;
+    padding: 30px 34px 26px;
+
+    /* Height stays content-driven. These only cap it on short viewports, so a
+       13in screen scrolls inside the card instead of the card outgrowing the
+       screen. The 40px matches the overlay's 20px padding on each side. */
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
+
     border-radius: 6px;
     background-color: $rcb-panel;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
@@ -214,4 +222,83 @@ $rcb-border:  #dfe6f0;
     .rcb__contacts a {
         font-size: 14px;
     }
+}
+
+/* ---------------------------------------------------------------------------
+   Product category combobox
+   Styled after the reference: a plain white list attached to the input, navy
+   rows, and a native scrollbar once the list runs past six or so options.
+   --------------------------------------------------------------------------- */
+
+.rcb__combo {
+    position: relative;
+
+    /* Caret on the wrapper rather than the input, so no padding trick is
+       needed to keep the text clear of it. */
+    &::after {
+        content: "";
+        position: absolute;
+        top: 23px;
+        right: 18px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid $rcb-navy;
+        pointer-events: none;
+    }
+}
+
+.rcb__combo-input {
+    padding-right: 42px;
+    /* .rcb centres its text; a search field reads wrong centred. */
+    text-align: left;
+}
+
+.rcb__combo-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 5;
+    max-height: 288px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid $rcb-border;
+    border-radius: 4px;
+    box-shadow: 0 12px 28px rgba(16, 49, 120, 0.14);
+
+    li {
+        display: block;
+        margin: 0;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 13px 18px;
+        border: none;
+        background: none;
+        color: $rcb-link;
+        font-size: 15px;
+        text-align: left;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+
+        &:hover,
+        &[aria-selected="true"] {
+            background-color: $rcb-panel;
+            color: $rcb-navy;
+        }
+    }
+}
+
+.rcb__combo-empty {
+    padding: 13px 18px;
+    color: $rcb-text;
+    font-size: 14px;
 }

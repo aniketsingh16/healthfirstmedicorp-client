@@ -14,8 +14,8 @@ export const WelcomeEmail = ({ firstName, logoSrc }) => (
             <Container style={container}>
                 <Img
                     src={logoSrc}
-                    width="140"
-                    height="62"
+                    width="168"
+                    height="60"
                     alt="Healthfirst Medicorp"
                     style={logo}
                 />
