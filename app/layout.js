@@ -22,6 +22,11 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
   },
+  verification: {
+  other: {
+    'msvalidate.01': 'F1CBD139A85C4F73AEC243DE3353EF88',
+  },
+},
 }
 
 const localBusinessSchema = {
